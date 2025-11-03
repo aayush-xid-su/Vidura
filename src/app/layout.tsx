@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { cn } from '@/lib/utils';
-import { SidebarProvider } from '@/components/ui/sidebar';
-import { SidebarNav } from '@/components/layout/sidebar-nav';
+import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
@@ -30,12 +29,8 @@ export default function RootLayout({
           'min-h-screen bg-background font-body antialiased',
         )}
       >
-        <SidebarProvider>
-          <div className="flex min-h-screen">
-            <SidebarNav />
-            <main className="flex-1">{children}</main>
-          </div>
-        </SidebarProvider>
+        <Header />
+        <main className="flex-1">{children}</main>
         <Toaster />
       </body>
     </html>

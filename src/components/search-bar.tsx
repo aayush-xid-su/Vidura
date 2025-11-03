@@ -23,13 +23,13 @@ export function SearchBar() {
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
         <Input
           type="search"
-          placeholder="Search incidents by keyword..."
-          className="pl-10"
+          placeholder="Search by organization, sector, or incident type..."
+          className="pl-10 bg-input border-border h-12"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
-      <Button type="submit">Search</Button>
+      <Button type="submit" className="h-12 bg-primary hover:bg-primary/90 text-primary-foreground">Search</Button>
     </form>
   );
 }
