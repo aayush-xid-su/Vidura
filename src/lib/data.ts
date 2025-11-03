@@ -612,7 +612,7 @@ export const incidents: Incident[] = [
     sector: 'Finance',
     incident_type: 'Data Breach',
     severity: 'High',
-    summary: 'Client data was exposed, including personal information, due to an AWS cloud storage misconfiguration.',
+    summary: 'Client data was exposed including personal information; no financial loss reported',
     description: 'Stockbroker Angel One disclosed an AWS security breach exposing client data, amid a 13% rise in average breach costs to INR 220 million, highlighting cloud security risks in finance.',
     sources: [
       { title: '20 Major Data Breaches of 2025', url: 'https://63sats.com/blog/20-major-data-breaches-of-2025/' },
@@ -629,7 +629,7 @@ export const incidents: Incident[] = [
     sector: 'Healthcare/Insurance',
     incident_type: 'Data Breach',
     severity: 'Critical',
-    summary: 'A massive data leak of 7.24TB affecting 31 million customers was followed by death threats and bullets mailed to executives.',
+    summary: '7.24TB of data leaked affecting 31 million customers; death threats and bullets mailed to executives',
     description: "Hacker 'xenZen' escalated a prior Star Health breach by leaking 7.24TB of customer data and sending death threats with bullet cartridges to executives, citing denied medical claims.",
     sources: [
       { title: 'Star Health Data Breach: Hacker Sends Bullets to Executives', url: 'https://timesofindia.indiatimes.com/technology/tech-news/star-health-data-breach-hacker-who-leaked-details-of-31-million-customers-sends-bullets-to-executives/articleshow/115239139.cms' },
@@ -645,7 +645,7 @@ export const incidents: Incident[] = [
     sector: 'Healthcare/Insurance',
     incident_type: 'Data Breach',
     severity: 'Critical',
-    summary: '561GB of sensitive data was stolen, including personal health information of 10.6 million individuals.',
+    summary: '561GB of data stolen including personal health information of 10.6 million individuals',
     description: "Threat actor 'Omid16B' exfiltrated 561GB of sensitive data from MedSave Health Insurance, exposing health records and corporate accounts, underscoring healthcare sector vulnerabilities.",
     sources: [
       { title: 'The State of Ransomware 2025', url: 'https://www.blackfog.com/the-state-of-ransomware-2025/' },
@@ -661,7 +661,7 @@ export const incidents: Incident[] = [
     sector: 'Government',
     incident_type: 'DDoS',
     severity: 'Critical',
-    summary: 'Over 1.5 million attack attempts were made, with 150 successful intrusions disrupting services after a terror attack.',
+    summary: 'Over 1.5 million attack attempts; 150 successful intrusions disrupting services',
     description: 'Post-Pahalgam terror attack, over 1.5 million cyberattacks from Pakistan, Bangladesh, Indonesia, and Middle East groups targeted government, banking, and healthcare sites, with 150 intrusions succeeding.',
     sources: [
       { title: 'Over 10 lakh cyber attacks on Indian systems after Pahalgam terror attack', url: 'https://www.newindianexpress.com/nation/2025/May/02/over-10-lakh-cyber-attacks-on-indian-systems-after-pahalgam-terror-attack-maharashtra-cyber' },
@@ -677,7 +677,7 @@ export const incidents: Incident[] = [
     sector: 'Transportation/E-commerce',
     incident_type: 'Data Breach',
     severity: 'High',
-    summary: '8.4 million user records were exposed, including personal and booking details.',
+    summary: '8.4 million user records exposed including personal and booking details',
     description: 'Car-sharing platform Zoomcar suffered a breach exposing 8.4 million user records, highlighting vulnerabilities in the shared mobility sector.',
     sources: [
       { title: 'Major Cyber Attacks, Ransomware Attacks and Data Breaches of June 2025', url: 'https://www.cm-alliance.com/cybersecurity-blog/major-cyber-attacks-ransomware-attacks-and-data-breaches-of-june-2025' },
@@ -693,7 +693,7 @@ export const incidents: Incident[] = [
     sector: 'Critical Infrastructure - Energy',
     incident_type: 'Malware',
     severity: 'Critical',
-    summary: 'At least 7 State Load Dispatch Centres were compromised, posing a risk for grid manipulation.',
+    summary: 'At least 7 SLDCs compromised; potential for grid manipulation',
     description: "A China-linked espionage campaign targeted seven State Load Dispatch Centres, compromising SCADA systems and posing risks to India's power grid.",
     sources: [
       { title: 'Cyber Espionage Against Critical Infrastructure: A Case Study of Targeted Attacks on Indian State Load Dispatch Centres', url: 'https://ijsrem.com/download/cyber-espionage-against-critical-infrastructure-a-case-study-of-targeted-attacks-on-indian-state-load-dispatch-centres-sldcs/' },
@@ -709,7 +709,7 @@ export const incidents: Incident[] = [
     sector: 'Critical Infrastructure/Energy/Transport',
     incident_type: 'Malware',
     severity: 'Critical',
-    summary: 'A Pakistan-linked APT campaign targeted India\'s energy and transport infrastructure with ICS malware.',
+    summary: 'Multiple intrusions into SCADA and OT systems in energy and transport',
     description: "Operation Bunyān al-Marsūs, a Pakistan-linked APT campaign, targeted India's energy and transport infrastructure with ICS malware, exploiting SCADA vulnerabilities.",
     sources: [
       { title: '20 Recent Cyber Attacks in India [2025]', url: 'https://eventussecurity.com/cybersecurity/india/cyber-attacks/' },
@@ -725,7 +725,7 @@ export const incidents: Incident[] = [
     sector: 'Finance',
     incident_type: 'Ransomware',
     severity: 'Critical',
-    summary: 'The Bashe ransomware group leaked customer data from March 2024 and demanded a ransom.',
+    summary: 'Customer data including names, phones, addresses, credit card details leaked',
     description: 'Bashe ransomware group leaked ICICI Bank customer data from March 2024, demanding ransom amid rising AI-enhanced threats to BFSI.',
     sources: [
       { title: 'The State of Ransomware 2025', url: 'https://www.blackfog.com/the-state-of-ransomware-2025/' },
@@ -742,7 +742,7 @@ export const incidents: Incident[] = [
     sector: 'Automotive',
     incident_type: 'Ransomware',
     severity: 'Critical',
-    summary: 'A ransomware attack halted production in India and globally until October 1, affecting suppliers.',
+    summary: 'Factory shutdowns in India and globally until October 1',
     description: 'JLR, owned by Tata Motors, faced a ransomware attack that halted production in India, affecting suppliers and exposing OT vulnerabilities in manufacturing.',
     sources: [
       { title: 'JLR extends factory closure due to cyber attack', url: 'https://www.theguardian.com/business/2025/sep/20/jaguar-land-rover-hack-factories-cybersecurity-jlr' },
@@ -758,7 +758,7 @@ export const incidents: Incident[] = [
     sector: 'Government - Environment',
     incident_type: 'Data Breach',
     severity: 'Critical',
-    summary: "1.2 million user records were leaked, including government officials' bank details.",
+    summary: "1.2 million user records leaked including government officials' bank details",
     description: "The Parivesh portal for environmental clearances was breached by 'flirt,' exposing 1.2 million user records, amid a 59% expectation of breaches in 2025.",
     sources: [
       { title: 'Parivesh Data Breach Exposes 1.2 Million User Records', url: 'https://dailydarkweb.net/parivesh-data-breach-exposes-1-2-million-user-records/' },
@@ -766,6 +766,190 @@ export const incidents: Incident[] = [
     affected_entities: ['Parivesh Government Portal'],
     attack_method: 'Unauthorized database access and leak',
     root_cause: 'Insecure database configurations'
+  },
+  {
+    id: 'inc-2024-001',
+    title: 'Hathway Cable & Datacom Ltd Data Breach',
+    date: '2024-01-15',
+    sector: 'Telecommunications/ISP',
+    incident_type: 'Data Breach',
+    severity: 'Critical',
+    attack_method: 'Laravel framework vulnerability exploitation, CMS compromise',
+    root_cause: 'Vulnerability in Laravel content management system, inadequate web security controls',
+    summary: "41.5 million customers' personal data exposed including Aadhaar numbers, email IDs, home addresses; over 200GB of sensitive data leaked",
+    description: "Hathway, a major ISP and cable operator in India, suffered a massive data breach when hacker 'dawnofdevil' exploited vulnerabilities in the company's Laravel-based content management system. The breach exposed 12GB of customer data and 214GB of production data, making it one of the largest ISP breaches in India.",
+    sources: [
+      {
+        title: "Alleged Hathway Data Leak Exposes 41 Million Customers",
+        url: "https://thecyberexpress.com/alleged-hathway-data-leak/",
+      },
+      {
+        title: "Hathway Data Breach",
+        url: "https://haveibeenpwned.com/Breach/Hathway",
+      }
+    ],
+    affected_entities: ['Hathway Cable & Datacom Ltd'],
+  },
+  {
+    id: 'inc-2024-002',
+    title: 'Operation FlightNight Espionage Campaign',
+    date: '2024-03-07',
+    sector: 'Government/Energy/Defense',
+    incident_type: 'Malware',
+    severity: 'Critical',
+    attack_method: 'Spear phishing with weaponized document, modified HackBrowserData malware, Slack C2 exfiltration',
+    root_cause: 'Sophisticated APT campaign exploiting trust in official communications, inadequate email security',
+    summary: '8.81GB of sensitive data exfiltrated from multiple government entities including defense, energy companies; financial documents, employee details, drilling activities compromised',
+    description: 'Operation FlightNight, discovered by EclecticIQ, targeted Indian government agencies and energy companies using a modified information stealer. The attack used phishing emails masquerading as Indian Air Force invitations and utilized Slack channels for data exfiltration. Multiple agencies responsible for defense, IT, and energy infrastructure were compromised.',
+    sources: [
+      {
+        title: 'Operation FlightNight: Indian Government Entities and Energy Sector Targeted',
+        url: 'https://blog.eclecticiq.com/operation-flightnight-indian-government-entities-and-energy-sector-targeted-by-cyber-espionage-campaign',
+      },
+      {
+        title: "India's government, energy sector breached in cyber-espionage campaign",
+        url: 'https://therecord.media/india-infostealer-government-energy-sector-espionage',
+      }
+    ],
+    affected_entities: ['Indian Government Entities', 'Energy Sector'],
+  },
+  {
+    id: 'inc-2024-003',
+    title: 'BSNL Data Breach',
+    date: '2024-06-15',
+    sector: 'Telecommunications/Government',
+    incident_type: 'Data Breach',
+    severity: 'Critical',
+    attack_method: 'Server compromise, database access, telecom data extraction',
+    root_cause: 'Inadequate server security, vulnerable telecom infrastructure',
+    summary: '278GB of sensitive telecom data compromised including IMSI numbers, SIM card details, home location register data, security keys; second breach in 6 months',
+    description: "BSNL suffered its second major data breach within six months when threat actor 'kiberphant0m' accessed over 278GB of sensitive telecom data. The breach included server snapshots that could enable SIM cloning and extortion. This followed a December 2023 breach by 'Perell', indicating systemic vulnerabilities in India's state telecom provider.",
+    sources: [
+      {
+        title: 'Year ender 2024: Biggest cyberattacks in India',
+        url: 'https://economictimes.com/tech/technology/year-ender-2024-biggest-cyberattacks-in-india/articleshow/116796935.cms',
+      },
+      {
+        title: '25 Major Cyber Attacks in India That Shocked the Nation',
+        url: 'https://www.sattrix.com/blog/biggest-cyber-attacks-in-india/',
+      }
+    ],
+    affected_entities: ['Bharat Sanchar Nigam Limited (BSNL)'],
+  },
+  {
+    id: 'inc-2024-004',
+    title: 'WazirX Cryptocurrency Exchange Hack',
+    date: '2024-07-18',
+    sector: 'Cryptocurrency/Financial Technology',
+    incident_type: 'Other',
+    severity: 'Critical',
+    attack_method: 'Exploitation of multi-signature wallet vulnerabilities, smart contract manipulation',
+    root_cause: 'Smart contract vulnerabilities in wallet infrastructure, inadequate security auditing of DeFi protocols',
+    summary: 'Over $230 million worth of cryptocurrency stolen including ETH, USDC, SHIB tokens; major disruption to Indian crypto ecosystem; trading suspended for weeks; 15 million users affected',
+    description: "WazirX, India's largest cryptocurrency exchange by volume, suffered a catastrophic exploit of its multi-signature wallet system on July 18, 2024. Attackers exploited vulnerabilities in smart contract logic to drain over $230 million in digital assets including Ethereum, USDC, and Shiba Inu tokens. The attack was linked to North Korean Lazarus Group using sophisticated social engineering and smart contract manipulation techniques.",
+    sources: [
+      {
+        title: 'WazirX Hack: $230M Stolen in Major Crypto Breach',
+        url: 'https://www.forbes.com/sites/digital-assets/2024/07/18/wazirx-hack-230m-stolen-in-major-crypto-breach/',
+      },
+      {
+        title: 'Biggest Cyber Attacks in India 2024',
+        url: 'https://skillogic.com/blog/biggest-cyber-attacks-in-india-2024-data-breaches-hacks/',
+      }
+    ],
+    affected_entities: ['WazirX'],
+  },
+  {
+    id: 'inc-2024-005',
+    title: 'C-Edge Technologies Ransomware Attack',
+    date: '2024-07-31',
+    sector: 'Financial Services/Banking Technology',
+    incident_type: 'Ransomware',
+    severity: 'Critical',
+    attack_method: 'RansomEXX ransomware via compromised Jenkins server at Brontoo Technology Solutions',
+    root_cause: 'Misconfigured Jenkins server at partner organization, supply chain vulnerability',
+    summary: 'Nearly 300 cooperative and regional rural banks affected; ATM withdrawals and UPI transactions disrupted; payment systems isolated by NPCI',
+    description: "C-Edge Technologies, a joint venture between SBI and TCS serving 300+ small banks, was hit by RansomEXX ransomware. The attack originated through Brontoo Technology Solutions' misconfigured Jenkins server. NPCI temporarily isolated C-Edge from retail payment systems, affecting rural and cooperative banking operations nationwide.",
+    sources: [
+      {
+        title: 'Ransomware Attack on C-Edge Technologies: Implications for Indian Banking',
+        url: 'https://www.cyberpeace.org/resources/blogs/ransomware-attack-on-c-edge-technologies-implications-for-indian-banking',
+      },
+      {
+        title: 'Ransomware attack forces hundreds of small Indian banks offline',
+        url: 'https://www.reuters.com/technology/cybersecurity/ransomware-attack-forces-hundreds-small-indian-banks-offline-sources-say-2024-07-31/',
+      }
+    ],
+    affected_entities: ['C-Edge Technologies'],
+  },
+  {
+    id: 'inc-2024-006',
+    title: 'Angel One Broking Data Breach',
+    date: '2024-08-01',
+    sector: 'Financial Services',
+    incident_type: 'Data Breach',
+    severity: 'High',
+    attack_method: 'Unauthorized access to customer database',
+    root_cause: 'Security vulnerabilities in customer data systems',
+    summary: "7.9-8 million customers' data leaked including stock holdings, financial portfolio details, trading history",
+    description: "Angel One, a major Indian brokerage firm, faced a data breach exposing 8 million customer records on hacker forums. The breach included sensitive financial information, trading portfolios, and investment details, highlighting vulnerabilities in India's growing fintech sector.",
+    sources: [
+      {
+        title: 'Year Ender 2024: Biggest Cyberattacks in India',
+        url: 'https://economictimes.com/tech/technology/year-ender-2024-biggest-cyberattacks-in-india/articleshow/116796935.cms',
+      },
+      {
+        title: 'Biggest Cyber Attacks in India 2024',
+        url: 'https://skillogic.com/blog/biggest-cyber-attacks-in-india-2024-data-breaches-hacks/',
+      }
+    ],
+    affected_entities: ['Angel One Broking'],
+  },
+  {
+    id: 'inc-2024-007',
+    title: 'AI-Powered Healthcare Ransomware Attack',
+    date: '2024-08-15',
+    sector: 'Healthcare',
+    incident_type: 'Ransomware',
+    severity: 'High',
+    attack_method: 'AI-enhanced ransomware with intelligent encryption prioritization',
+    root_cause: 'Phishing email targeting hospital administrator, AI malware adaptation to network',
+    summary: '₹100 crore ransom demand, patient admissions disrupted, surgeries rerouted, electronic health records encrypted',
+    description: "An Indian healthcare provider specializing in AI advancements was targeted by sophisticated AI-driven ransomware. The attack began with a phishing email and the AI-infused malware intelligently prioritized encryption of critical systems. This represents the evolution of ransomware using artificial intelligence for maximum impact.",
+    sources: [
+      {
+        title: 'Research Report: AI-Powered Ransomware Attack on a Healthcare Provider',
+        url: 'https://www.cyberpeace.org/resources/blogs/research-report-ai-powered-ransomware-attack-on-a-healthcare-provider',
+      },
+      {
+        title: 'Plagued by Cyberattacks: Indian Healthcare Sector in Critical Condition',
+        url: 'https://www.tripwire.com/state-of-security/plagued-cyberattacks-indian-healthcare-sector-critical-condition',
+      }
+    ],
+    affected_entities: ['Anonymous Indian Hospital'],
+  },
+  {
+    id: 'inc-2024-008',
+    title: 'Star Health Insurance Data Breach',
+    date: '2024-09-20',
+    sector: 'Healthcare/Insurance',
+    incident_type: 'Data Breach',
+    severity: 'Critical',
+    attack_method: 'Internal system compromise, data exfiltration and Telegram distribution',
+    root_cause: 'Potential insider involvement, inadequate data access controls',
+    summary: "31 million customers' personal and medical data compromised including tax records, medical claims; 7.24TB of sensitive data leaked; $68,000 ransom demanded",
+    description: "Star Health, India's largest health insurer, suffered a massive breach when hacker 'xenZen' compromised 7.24TB of sensitive data affecting 31 million customers. The attacker used Telegram chatbots to distribute customer data and later sent death threats including bullet cartridges to company executives, citing denied medical claims as motivation.",
+    sources: [
+      {
+        title: "India's Star Health says it received $68000 ransom demand after data leak",
+        url: "https://www.reuters.com/world/india/indias-star-health-says-it-received-68k-ransom-demand-after-data-leak-2024-10-12/",
+      },
+      {
+        title: 'Star Health Data Breach Affects 31 Million Users',
+        url: 'https://www.medianama.com/2024/09/223-star-health-data-breach-31-million-users-data-exposed-chatbots-offer-samples-on-telegram/',
+      }
+    ],
+    affected_entities: ['Star Health Insurance'],
   }
-];
-
+]
+```
