@@ -1,37 +1,63 @@
+'use client';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Suspense } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { FileText, User, Search } from 'lucide-react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 
-function PageContent() {
-    return (
+export default function Home() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/incidents?search=${encodeURIComponent(searchQuery.trim())}`);
+    } else {
+      router.push('/incidents');
+    }
+  };
+
+  return (
     <div className="flex flex-col items-center justify-center text-center flex-1 p-4">
-      <h1 className="text-5xl md:text-7xl font-bold font-headline tracking-tighter text-primary">
-        Vidura
+      <h1 className="text-5xl md:text-7xl font-bold font-headline tracking-tight text-primary">
+        Vidura: Cybersecurity Incident Record
       </h1>
-      <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-        An open-source platform for tracking and analyzing cybersecurity incidents across India.
+      <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+        Search and filter through cybersecurity incidents in India (2000-2025). This is a static snapshot; in a real-world application, this data would be connected to a live feed for automatic updates.
       </p>
-      <div className="mt-8 flex gap-4">
+      
+      <form onSubmit={handleSearch} className="mt-8 flex w-full max-w-2xl items-center space-x-2">
+        <div className="relative flex-grow">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          <Input
+            type="text"
+            placeholder="Search by organization, sector, or incident type..."
+            className="pl-10 h-12 text-base"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+        <Button type="submit" size="lg" className="h-12">Search</Button>
+      </form>
+
+      <div className="mt-6 flex gap-4">
         <Button asChild size="lg">
           <Link href="/incidents">
-            Browse Incidents <ArrowRight className="ml-2 h-4 w-4" />
+            <FileText className="mr-2 h-5 w-5" />
+            Browse All Incidents
           </Link>
         </Button>
-        <Button asChild variant="outline" size="lg">
-            <a href="https://github.com/aayush-xid-su/vidura" target="_blank" rel="noopener noreferrer">
-                View on GitHub
-            </a>
+        <Button asChild variant="secondary" size="lg">
+          <Link href="/author">
+            <User className="mr-2 h-5 w-5" />
+            About Author
+          </Link>
         </Button>
       </div>
     </div>
-    )
-}
-
-export default function Home() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-        <PageContent />
-    </Suspense>
   );
 }
