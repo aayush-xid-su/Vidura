@@ -12,8 +12,8 @@ export default function AuthorPage() {
   return (
     <div className="flex-1 flex flex-col items-center justify-center p-4">
       <div className="absolute top-24 left-8 md:left-24 text-left">
-        <h1 className="text-4xl font-headline font-bold text-primary">About the Author</h1>
-        <p className="text-muted-foreground">A little bit about the creator of this application.</p>
+        <h1 className="text-3xl md:text-4xl font-headline font-bold text-primary">About the Author</h1>
+        <p className="text-base text-muted-foreground">A little bit about the creator of this application.</p>
       </div>
       <div className="w-full max-w-2xl">
         <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-xl shadow-lg p-8 text-center flex flex-col items-center">
@@ -21,9 +21,9 @@ export default function AuthorPage() {
                 <AvatarImage src="/aayush.jpeg" alt="Ayush Das" />
                 <AvatarFallback>AD</AvatarFallback>
             </Avatar>
-            <h2 className="text-3xl font-bold text-foreground">Ayush Das</h2>
-            <p className="text-primary font-medium mb-6">cybersecurity enthusiast</p>
-            <p className="text-muted-foreground max-w-md mx-auto mb-8">
+            <h2 className="text-2xl font-bold font-headline text-foreground">Ayush Das</h2>
+            <p className="text-primary font-medium mb-6 text-base">cybersecurity enthusiast</p>
+            <p className="text-base text-muted-foreground max-w-md mx-auto mb-8">
                 I am a passionate cybersecurity enthusiast and web developer with a love for creating innovative and impactful applications. This project is a demonstration of how to analyze and understand complex datasets like cybersecurity incidents.
             </p>
             <div className="flex flex-wrap justify-center gap-4">

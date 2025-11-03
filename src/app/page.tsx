@@ -23,10 +23,10 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center text-center flex-1 p-4">
-      <h1 className="text-5xl md:text-7xl font-bold font-headline tracking-tight text-primary">
+      <h1 className="text-4xl md:text-6xl font-bold font-headline tracking-tight text-primary">
         Vidura: Cybersecurity Incident Record
       </h1>
-      <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+      <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
         Search and filter through cybersecurity incidents in India (2000-2025). This is a static snapshot; in a real-world application, this data would be connected to a live feed for automatic updates.
       </p>
       

@@ -41,15 +41,15 @@ export default function SourcesPage() {
   return (
     <div className="container mx-auto py-6 px-4 md:px-6">
       <div className="mb-8 text-center">
-        <h1 className="text-4xl font-headline font-bold">Data Sources</h1>
-        <p className="text-muted-foreground mt-2">A categorized list of all sources referenced in the incident reports.</p>
+        <h1 className="text-3xl md:text-4xl font-headline font-bold text-primary">Data Sources</h1>
+        <p className="text-base text-muted-foreground mt-2">A categorized list of all sources referenced in the incident reports.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {sources.map(source => (
           <Card key={source.domain}>
             <CardHeader>
-              <CardTitle className="flex items-center text-lg">
+              <CardTitle className="flex items-center text-lg font-headline">
                 <Globe className="mr-3 h-5 w-5 text-primary" />
                 {source.domain}
               </CardTitle>

@@ -56,10 +56,10 @@ export default function TimelinePage() {
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="text-center mb-12">
-        <h1 className="text-5xl md:text-7xl font-bold font-headline tracking-tighter text-primary">
+        <h1 className="text-3xl md:text-4xl font-bold font-headline tracking-tighter text-primary">
           Incident Timeline
         </h1>
-        <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
           A visual representation of the most significant cybersecurity incidents in India over time.
         </p>
       </div>
@@ -70,7 +70,7 @@ export default function TimelinePage() {
         {years.map(year => (
             <div key={year} className="relative mb-12">
                 <div className="absolute left-9 md:left-1/2 -translate-x-1/2 -top-2 z-10">
-                     <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl">
+                     <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl font-headline">
                         {year}
                      </div>
                 </div>
@@ -89,7 +89,7 @@ export default function TimelinePage() {
                                     <Card className="hover:border-primary/50 hover:shadow-lg transition-all">
                                         <CardContent className="p-4">
                                             <div className="flex justify-between items-start mb-2">
-                                                <h3 className="font-bold text-lg text-card-foreground">{incident.title}</h3>
+                                                <h3 className="font-bold text-lg font-headline text-card-foreground">{incident.title}</h3>
                                                 <Badge variant="outline" className="text-xs whitespace-nowrap">{new Date(incident.date).toLocaleDateString('en-US', { day: '2-digit', month: 'short' })}</Badge>
                                             </div>
                                             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground mb-3">
