@@ -76,37 +76,48 @@ export default function TimelinePage() {
                 </div>
 
                 <div className="pt-24 space-y-8">
-                     {groupedIncidents[year].map(incident => (
-                         <div key={incident.id} className="relative flex items-start gap-4 md:gap-8">
-                            <div className="hidden md:block w-1/2 text-right pr-8">
-                                {/* Empty for alignment */}
-                            </div>
-                             <div className="absolute top-5 left-9 md:left-1/2 -translate-x-1/2 z-10">
-                                 <div className="h-3 w-3 rounded-full bg-primary border-2 border-background"></div>
+                     {groupedIncidents[year].map((incident, index) => {
+                         const isOdd = index % 2 !== 0;
+                         const content = (
+                            <Link href={`/incidents/${incident.id}`} className="block">
+                                <Card className="hover:border-primary/50 hover:shadow-lg transition-all">
+                                    <CardContent className="p-4">
+                                        <div className="flex justify-between items-start mb-2">
+                                            <h3 className="font-bold text-lg font-headline text-card-foreground">{incident.title}</h3>
+                                            <Badge variant="outline" className="text-xs whitespace-nowrap">{new Date(incident.date).toLocaleDateString('en-US', { day: '2-digit', month: 'short' })}</Badge>
+                                        </div>
+                                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground mb-3">
+                                            <span className="flex items-center gap-1.5"><Building className="h-3 w-3" />{incident.affected_entities[0]}</span>
+                                            <span className="flex items-center gap-1.5"><Tag className="h-3 w-3" />{incident.incident_type}</span>
+                                        </div>
+                                        <p className="text-sm text-muted-foreground mb-3">{incident.summary}</p>
+                                        <div className={`flex items-center gap-2 text-sm font-medium ${getSeverityClass(incident.severity)}`}>
+                                            {getSeverityIcon(incident.severity)}
+                                            {incident.severity} Severity
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            </Link>
+                         );
+                         return (
+                             <div key={incident.id} className="relative flex items-start gap-4 md:gap-8">
+                                <div className="absolute top-5 left-9 md:left-1/2 -translate-x-1/2 z-10">
+                                     <div className="h-3 w-3 rounded-full bg-primary border-2 border-background"></div>
+                                 </div>
+                                {isOdd ? (
+                                    <>
+                                        <div className="hidden md:flex w-1/2 text-right pr-8 justify-end">{content}</div>
+                                        <div className="w-full md:w-1/2 md:pl-8"></div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div className="hidden md:block w-1/2 text-right pr-8"></div>
+                                        <div className="w-full md:w-1/2 md:pl-8">{content}</div>
+                                    </>
+                                )}
                              </div>
-                             <div className="w-full md:w-1/2 md:pl-8">
-                                <Link href={`/incidents/${incident.id}`} className="block">
-                                    <Card className="hover:border-primary/50 hover:shadow-lg transition-all">
-                                        <CardContent className="p-4">
-                                            <div className="flex justify-between items-start mb-2">
-                                                <h3 className="font-bold text-lg font-headline text-card-foreground">{incident.title}</h3>
-                                                <Badge variant="outline" className="text-xs whitespace-nowrap">{new Date(incident.date).toLocaleDateString('en-US', { day: '2-digit', month: 'short' })}</Badge>
-                                            </div>
-                                            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground mb-3">
-                                                <span className="flex items-center gap-1.5"><Building className="h-3 w-3" />{incident.affected_entities[0]}</span>
-                                                <span className="flex items-center gap-1.5"><Tag className="h-3 w-3" />{incident.incident_type}</span>
-                                            </div>
-                                            <p className="text-sm text-muted-foreground mb-3">{incident.summary}</p>
-                                            <div className={`flex items-center gap-2 text-sm font-medium ${getSeverityClass(incident.severity)}`}>
-                                                {getSeverityIcon(incident.severity)}
-                                                {incident.severity} Severity
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                </Link>
-                             </div>
-                         </div>
-                     ))}
+                         );
+                     })}
                 </div>
 
             </div>
