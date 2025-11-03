@@ -52,7 +52,7 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={cn(
-                'transition-colors hover:text-foreground/80',
+                'transition-colors hover:text-primary',
                 (pathname === item.href)
                   ? 'text-primary font-semibold'
                   : 'text-foreground/60'
@@ -334,7 +334,7 @@ export function Header() {
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      'transition-colors hover:text-foreground/80',
+                      'transition-colors hover:text-primary',
                       pathname === item.href ? 'text-primary font-semibold' : 'text-foreground/60'
                     )}
                   >

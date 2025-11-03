@@ -83,10 +83,10 @@ export default function TimelinePage() {
                          incidentCounter++;
                          const content = (
                             <Link href={`/incidents/${incident.id}`} className="block">
-                                <Card className="hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+                                <Card className="hover:border-primary/50 hover:shadow-xl transition-all duration-300">
                                     <CardContent className="p-4">
                                         <div className="flex justify-between items-start mb-2 gap-2">
-                                            <h3 className="font-bold text-base md:text-lg font-headline text-card-foreground">{incident.title}</h3>
+                                            <h3 className="font-bold text-base md:text-lg font-headline text-card-foreground group-hover:text-primary">{incident.title}</h3>
                                             <Badge variant="outline" className="text-xs whitespace-nowrap">{new Date(incident.date).toLocaleDateString('en-US', { day: '2-digit', month: 'short' })}</Badge>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground mb-3">
@@ -103,7 +103,7 @@ export default function TimelinePage() {
                             </Link>
                          );
                          return (
-                             <div key={incident.id} className="relative flex items-start gap-4 md:gap-8">
+                             <div key={incident.id} className="relative flex items-start gap-4 md:gap-8 group">
                                 <div className="absolute top-5 left-4 md:left-1/2 -translate-x-1/2 z-10">
                                      <div className="h-3 w-3 rounded-full bg-primary border-2 border-background"></div>
                                  </div>

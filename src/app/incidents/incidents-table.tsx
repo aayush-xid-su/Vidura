@@ -275,7 +275,7 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
                     </TableCell>
                     <TableCell>
                       {item.sources.length > 0 ? (
-                          <a href={item.sources[0].url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm hover:underline">
+                          <a href={item.sources[0].url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm hover:underline text-primary">
                               <LinkIcon className="h-3 w-3" />
                               Link
                           </a>

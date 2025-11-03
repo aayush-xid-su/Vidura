@@ -31,20 +31,23 @@ export default function SourcesPage() {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                 {category.sources.map((source, index) => (
-                  <div key={index} className="flex items-center justify-between border-b border-border/10 pb-3">
+                  <a
+                    key={index}
+                    href={source.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between border-b border-border/10 pb-3 group hover:bg-accent/50 p-2 rounded-lg transition-colors"
+                  >
                     <div>
-                      <p className="font-semibold text-foreground">{source.title}</p>
+                      <p className="font-semibold text-foreground group-hover:text-primary">{source.title}</p>
                       <Badge variant="secondary" className="mt-1">{source.type}</Badge>
                     </div>
-                    <a
-                      href={source.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-primary hover:underline"
+                    <div
+                      className="flex items-center gap-2 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity"
                     >
                       Visit <ExternalLink className="h-4 w-4" />
-                    </a>
-                  </div>
+                    </div>
+                  </a>
                 ))}
               </div>
             </CardContent>

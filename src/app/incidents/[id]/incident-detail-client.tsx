@@ -57,10 +57,10 @@ export function IncidentDetailClient({ incident, allIncidents, isQuickActions = 
                <ul className="space-y-3">
                   {incident.sources.map(source => (
                       <li key={source.url} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg transition-colors hover:bg-muted/60">
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-3 group">
                               <FileText className="h-5 w-5 text-primary" />
                               <div>
-                                  <p className="font-semibold">{source.title}</p>
+                                  <p className="font-semibold group-hover:text-primary">{source.title}</p>
                                   <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground flex items-center gap-1 hover:underline">
                                     <LinkIcon className="h-3 w-3" />
                                     {new URL(source.url).hostname}
