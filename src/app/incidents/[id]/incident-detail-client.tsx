@@ -77,21 +77,6 @@ export function IncidentDetailClient({ incident, allIncidents, isQuickActions = 
       </Card>
       
       <IncidentSimilarity currentIncident={incident} allIncidents={allIncidents} isPrimaryButton={true}/>
-
-      {/* Impact */}
-      <Card>
-        <CardHeader><CardTitle className="flex items-center"><AlertTriangle className="mr-2 text-destructive"/>Impact</CardTitle></CardHeader>
-        <CardContent className="space-y-4">
-            <div>
-                <h4 className="font-semibold">Organizational Impact</h4>
-                <p className="text-muted-foreground text-sm">Widespread power outage affecting 2 million people for 12 hours.</p>
-            </div>
-             <div>
-                <h4 className="font-semibold">Financial Impact</h4>
-                <p className="text-muted-foreground text-sm">Estimated economic loss of over $100 million.</p>
-             </div>
-        </CardContent>
-      </Card>
     </>
   );
 }

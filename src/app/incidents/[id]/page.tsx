@@ -79,8 +79,21 @@ export default function IncidentDetailPage({ params }: { params: { id: string } 
                     <CardContent><p className="text-base text-muted-foreground">{incident.description}</p></CardContent>
                 </Card>
 
-                <IncidentDetailClient incident={incident} allIncidents={allIncidents} />
-                
+                {/* Impact */}
+                <Card>
+                    <CardHeader><CardTitle className="flex items-center"><AlertTriangle className="mr-2 text-destructive"/>Impact</CardTitle></CardHeader>
+                    <CardContent className="space-y-4">
+                        <div>
+                            <h4 className="font-semibold">Organizational Impact</h4>
+                            <p className="text-muted-foreground text-sm">Widespread power outage affecting 2 million people for 12 hours.</p>
+                        </div>
+                        <div>
+                            <h4 className="font-semibold">Financial Impact</h4>
+                            <p className="text-muted-foreground text-sm">Estimated economic loss of over $100 million.</p>
+                        </div>
+                    </CardContent>
+                </Card>
+
                  {/* Verification Status */}
                 <Card>
                     <CardHeader><CardTitle className="flex items-center gap-2 text-2xl font-headline"><CheckCircle2 className="text-green-500"/>Verification Status</CardTitle></CardHeader>
@@ -91,6 +104,8 @@ export default function IncidentDetailPage({ params }: { params: { id: string } 
                          </div>
                     </CardContent>
                 </Card>
+                
+                <IncidentDetailClient incident={incident} allIncidents={allIncidents} />
             </div>
 
             <div className="space-y-8">
