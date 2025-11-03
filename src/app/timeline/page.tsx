@@ -52,6 +52,7 @@ export default function TimelinePage() {
   }, {} as GroupedIncidents);
 
   const years = Object.keys(groupedIncidents).sort((a, b) => Number(b) - Number(a));
+  let incidentCounter = 0;
 
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
@@ -76,8 +77,9 @@ export default function TimelinePage() {
                 </div>
 
                 <div className="pt-24 space-y-8">
-                     {groupedIncidents[year].map((incident, index) => {
-                         const isOdd = index % 2 !== 0;
+                     {groupedIncidents[year].map((incident) => {
+                         const isOdd = incidentCounter % 2 !== 0;
+                         incidentCounter++;
                          const content = (
                             <Link href={`/incidents/${incident.id}`} className="block">
                                 <Card className="hover:border-primary/50 hover:shadow-lg transition-all">
@@ -106,12 +108,12 @@ export default function TimelinePage() {
                                  </div>
                                 {isOdd ? (
                                     <>
-                                        <div className="hidden md:flex w-1/2 text-right pr-8 justify-end">{content}</div>
+                                        <div className="hidden md:flex w-full md:w-1/2 justify-end md:pr-8">{content}</div>
                                         <div className="w-full md:w-1/2 md:pl-8"></div>
                                     </>
                                 ) : (
                                     <>
-                                        <div className="hidden md:block w-1/2 text-right pr-8"></div>
+                                        <div className="w-full md:w-1/2"></div>
                                         <div className="w-full md:w-1/2 md:pl-8">{content}</div>
                                     </>
                                 )}
