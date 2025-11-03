@@ -19,7 +19,7 @@ export default function AuthorPage() {
       <div className="w-full max-w-2xl mt-32 md:mt-0">
         <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-xl shadow-lg p-8 text-center flex flex-col items-center">
             <Avatar className="w-24 h-24 mb-4 border-4 border-primary/20">
-                <AvatarImage src="https://picsum.photos/seed/author/200/200" alt="Ayush Das" className="object-cover" data-ai-hint="man portrait" />
+                <AvatarImage src="https://picsum.photos/seed/ayush/200/200" alt="Ayush Das" className="object-cover" data-ai-hint="man portrait" />
                 <AvatarFallback>AD</AvatarFallback>
             </Avatar>
             <h2 className="text-2xl font-bold font-headline text-foreground">Ayush Das</h2>
