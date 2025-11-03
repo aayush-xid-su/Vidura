@@ -96,9 +96,9 @@ export function Header() {
                 </p>
                 <p>Ayush's work reflects a deep commitment to:</p>
                 <ul>
-                  <li>🧠 <strong>Knowledge Transparency</strong> – Making credible cyber incident data publicly available.</li>
-                  <li>🛡️ <strong>National Cyber Awareness</strong> – Educating citizens and professionals about India’s digital vulnerabilities.</li>
-                  <li>⚙️ <strong>Open Research Collaboration</strong> – Encouraging data-driven study and community contributions to cyber defense efforts.</li>
+                  <li>🧠 Knowledge Transparency – Making credible cyber incident data publicly available.</li>
+                  <li>🛡️ National Cyber Awareness – Educating citizens and professionals about India’s digital vulnerabilities.</li>
+                  <li>⚙️ Open Research Collaboration – Encouraging data-driven study and community contributions to cyber defense efforts.</li>
                 </ul>
 
                 <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">Why Vidura Was Created</h2>
@@ -110,10 +110,10 @@ export function Header() {
                 </p>
                 <p>Our goals are:</p>
                 <ul>
-                    <li>🗂️ <strong>Comprehensive Documentation</strong> — Record major cyber incidents from credible sources.</li>
-                    <li>📈 <strong>Research & Analysis</strong> — Enable trend studies, threat pattern analysis, and risk modeling.</li>
-                    <li>🧠 <strong>Education & Awareness</strong> — Help students, journalists, and policymakers understand India’s evolving threat landscape.</li>
-                    <li>🛡️ <strong>Strategic Insight</strong> — Support informed cybersecurity decisions through historical context.</li>
+                    <li>🗂️ Comprehensive Documentation — Record major cyber incidents from credible sources.</li>
+                    <li>📈 Research & Analysis — Enable trend studies, threat pattern analysis, and risk modeling.</li>
+                    <li>🧠 Education & Awareness — Help students, journalists, and policymakers understand India’s evolving threat landscape.</li>
+                    <li>🛡️ Strategic Insight — Support informed cybersecurity decisions through historical context.</li>
                 </ul>
 
                 <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">How Vidura Works</h2>
@@ -159,10 +159,10 @@ export function Header() {
                 
                 <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">Who Can Use Vidura</h2>
                 <ul>
-                    <li>🧑‍🎓 <strong>Students & Educators:</strong> For coursework, projects, and cybersecurity education.</li>
-                    <li>🧑‍💼 <strong>Researchers & Analysts:</strong> For studying trends and building data-driven insights.</li>
-                    <li>📰 <strong>Journalists:</strong> For referencing verified historical data in news reports.</li>
-                    <li>🧑‍⚖️ <strong>Policy Makers & Security Professionals:</strong> To understand past attack patterns and build better defenses.</li>
+                    <li>🧑‍🎓 Students & Educators: For coursework, projects, and cybersecurity education.</li>
+                    <li>🧑‍💼 Researchers & Analysts: For studying trends and building data-driven insights.</li>
+                    <li>📰 Journalists: For referencing verified historical data in news reports.</li>
+                    <li>🧑‍⚖️ Policy Makers & Security Professionals: To understand past attack patterns and build better defenses.</li>
                 </ul>
 
                 <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">The Vision Ahead</h2>
@@ -201,7 +201,7 @@ export function Header() {
             <DialogContent className="max-w-3xl">
               <DialogHeader>
                 <DialogTitle className="flex items-center text-2xl font-headline font-bold mb-1">
-                    <Scale className="mr-2 h-6 w-6"/> Vidura - Terms & Conditions
+                    <Scale className="mr-2 h-6 w-6"/> Vidura – Terms &amp; Conditions
                 </DialogTitle>
               </DialogHeader>
                 <div className="text-sm text-muted-foreground mb-4">Effective Date: 5 November 2025</div>
@@ -210,7 +210,7 @@ export function Header() {
                     Welcome to Vidura. By accessing or using this Website, you agree to comply with and be bound by these Terms and Conditions. If you do not agree with any part of these terms, please do not use this Website.
                   </p>
                   <h3 className="text-xl font-headline font-semibold mt-4 mb-2">1. Purpose of the Website</h3>
-                  <p>Vidura is an independent cybersecurity research initiative that documents and analyzes cyber incidents in India from 2000-2025. The Website aims to:</p>
+                  <p>Vidura is an independent cybersecurity research initiative that documents and analyzes cyber incidents in India from 2000–2025. The Website aims to:</p>
                   <ul>
                     <li>Preserve publicly known cyber incident data for research and education.</li>
                     <li>Support awareness, academic work, and policy-making related to cybersecurity in India.</li>
@@ -220,28 +220,61 @@ export function Header() {
 
                   <h3 className="text-xl font-headline font-semibold mt-6 mb-2">2. Educational Purpose</h3>
                    <p>
-                    The data and analysis provided on this website are for educational and informational purposes only. The creators are not liable for any decisions made based on this data.
+                    The data and analysis provided on this website are for educational and informational purposes only. The creators are not liable for any decisions made based on this information. All data is provided "as is" without warranty of any kind. This project is a demonstration and should not be used for real-world decision-making.
                   </p>
 
-                  <h3 className="text-xl font-headline font-semibold mt-6 mb-2">3. Disclaimer of Accuracy</h3>
-                  <p>
-                    The information provided by the Service is for demonstration purposes only. We make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information contained on the website for any purpose. Any reliance you place on such information is therefore strictly at your own risk.
-                  </p>
+                  <h3 className="text-xl font-headline font-semibold mt-6 mb-2">3. Use of Information</h3>
+                    <p>You may:</p>
+                    <ul>
+                        <li>View, cite, and share information from Vidura for research, educational, or journalistic purposes, with proper attribution.</li>
+                        <li>Download structured datasets (JSON, CSV) for academic and non-commercial analysis.</li>
+                    </ul>
+                    <p>You may not:</p>
+                    <ul>
+                        <li>Use the Website or its content for any unlawful, defamatory, or misleading activity.</li>
+                        <li>Copy or redistribute large portions of data without written permission.</li>
+                        <li>Claim ownership or authorship of the content published on Vidura.</li>
+                    </ul>
                   
-                  <h3 className="text-xl font-headline font-semibold mt-6 mb-2">4. Intellectual Property</h3>
+                  <h3 className="text-xl font-headline font-semibold mt-6 mb-2">4. Accuracy and Verification</h3>
                   <p>
-                    The underlying source code, design, and framework of this application are the property of its creators. The fictional data is for illustrative use within the application only.
+                    While every effort has been made to ensure accuracy, Vidura cannot guarantee that all information is complete, current, or free from error. Each incident entry is verified using multiple credible sources; however, cybersecurity incident reporting is dynamic and may change as new details emerge. Vidura shall not be held liable for any reliance placed on the information provided.
                   </p>
 
-                  <h3 className="text-xl font-headline font-semibold mt-6 mb-2">5. Limitation of Liability</h3>
-                  <p>
-                    In no event will we be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from the use of this application. This is a non-commercial, educational project.
-                  </p>
+                  <h3 className="text-xl font-headline font-semibold mt-6 mb-2">5. Third-Party Links and Sources</h3>
+                    <p>
+                        The Website contains links to third-party articles, advisories, and reports. These links are provided for reference only and do not imply endorsement or affiliation. Vidura has no control over the content, accuracy, or availability of external websites.
+                    </p>
                   
-                  <h3 className="text-xl font-headline font-semibold mt-6 mb-2">6. Changes to Terms</h3>
+                  <h3 className="text-xl font-headline font-semibold mt-6 mb-2">6. Intellectual Property</h3>
                   <p>
-                    We reserve the right to modify these terms from time to time at our sole discretion. Therefore, you should review this page periodically. Your continued use of the Website or our service after any such change constitutes your acceptance of the new Terms.
+                    Unless otherwise stated, the Website’s design, logo, structure, and metadata schema are the intellectual property of the creators of Vidura. All third-party materials (news reports, advisories, research papers) remain the property of their respective owners and are cited in accordance with fair use principles.
                   </p>
+
+                  <h3 className="text-xl font-headline font-semibold mt-6 mb-2">7. Limitation of Liability</h3>
+                    <p>
+                        Under no circumstances shall Vidura, its contributors, or affiliates be held liable for: Any direct, indirect, incidental, or consequential damages arising from the use or inability to use the Website. Any errors, omissions, or inaccuracies in the provided information. Use of the Website is entirely at your own risk.
+                    </p>
+
+                  <h3 className="text-xl font-headline font-semibold mt-6 mb-2">8. Data and Privacy</h3>
+                    <p>
+                        Vidura does not collect personal data from visitors except for minimal analytics or submission forms (if any). No personally identifiable information is stored, sold, or shared. For submissions or contact forms, user-provided information will be used solely for verification or communication related to the project.
+                    </p>
+
+                  <h3 className="text-xl font-headline font-semibold mt-6 mb-2">9. Changes to the Terms</h3>
+                  <p>
+                    Vidura reserves the right to update or modify these Terms and Conditions at any time without prior notice. Continued use of the Website constitutes acceptance of the updated terms.
+                  </p>
+
+                  <h3 className="text-xl font-headline font-semibold mt-6 mb-2">10. Governing Law</h3>
+                    <p>
+                        These Terms and Conditions shall be governed by and construed in accordance with the laws of India. Any disputes shall fall under the jurisdiction of the courts of Nuapada, odisha,India.
+                    </p>
+                    
+                    <h3 className="text-xl font-headline font-semibold mt-6 mb-2">11. Contact Information</h3>
+                    <p>For questions, corrections, or data removal requests, please contact:<br/>
+                    📧 aayushxidsu.11am@gmail.com</p>
+
                 </div>
             </DialogContent>
           </Dialog>
