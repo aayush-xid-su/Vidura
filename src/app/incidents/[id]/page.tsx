@@ -2,9 +2,25 @@ import { incidents } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import { Badge } from '@/components/ui/badge';
 import type { Incident } from '@/lib/types';
-import { Calendar, Tag, Shield, List, Building, Link as LinkIcon, AlertTriangle } from 'lucide-react';
+import { 
+    Calendar, 
+    Tag, 
+    Shield, 
+    Building, 
+    Link as LinkIcon, 
+    AlertTriangle, 
+    ArrowLeft,
+    FileText,
+    Eye,
+    Server,
+    FileJson,
+    CheckCircle2
+} from 'lucide-react';
 import Link from 'next/link';
-import { IncidentSimilarity } from './incident-similarity';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { exportToJson } from '@/lib/utils';
+import { IncidentSimilarity } from './incident-similarity-client';
 
 export function generateStaticParams() {
   return incidents.map((incident) => ({
@@ -42,79 +58,167 @@ export default function IncidentDetailPage({ params }: { params: { id: string } 
     notFound();
   }
   
-  const otherIncidents = incidents.filter(p => p.id !== params.id);
+  const allIncidents = incidents;
+
+  const handleExport = () => {
+    'use client';
+    exportToJson(`incident-${incident.id}`, incident);
+  }
 
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
+        <Link href="/incidents" className="text-sm text-primary hover:underline mb-4 inline-flex items-center gap-2">
+            <ArrowLeft className="h-4 w-4" /> Back to Browse
+        </Link>
         <div className="mb-6">
-          <Link href="/incidents" className="text-sm text-primary hover:underline mb-2 inline-block">
-            &larr; Back to all incidents
-          </Link>
-          <h1 className="text-4xl font-headline font-bold mb-2">{incident.title}</h1>
+          <h1 className="text-4xl md:text-5xl font-headline font-bold mb-2 text-primary">{incident.title}</h1>
           <div className="flex flex-wrap items-center gap-4 text-muted-foreground text-sm">
-            <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
-              <span>{new Date(incident.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Tag className="h-4 w-4" />
-              <span>{incident.sector}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <AlertTriangle className="h-4 w-4" />
-              <span>{incident.incident_type}</span>
-            </div>
+            <span>{incident.incident_type}</span>
+            <span>&bull;</span>
+            <span>{new Date(incident.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <Badge variant={getSeverityBadge(incident.severity)} className="ml-2">{incident.severity} Severity</Badge>
           </div>
         </div>
 
-        <div className="prose dark:prose-invert max-w-none mb-8">
-            <p className="lead text-lg text-muted-foreground">{incident.summary}</p>
-            <p>{incident.description}</p>
-        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+            <div className="md:col-span-2 space-y-8">
+                {/* Incident Description */}
+                <Card>
+                    <CardHeader><CardTitle>Incident Description</CardTitle></CardHeader>
+                    <CardContent><p className="text-muted-foreground">{incident.description}</p></CardContent>
+                </Card>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="rounded-lg border bg-card text-card-foreground p-6">
-                <h3 className="font-headline text-lg font-semibold mb-4 flex items-center"><Shield className="mr-2 h-5 w-5 text-primary" />Details</h3>
-                <div className="space-y-3 text-sm">
-                    <div className="flex justify-between">
-                        <span className="text-muted-foreground">Severity:</span>
-                        <Badge variant={getSeverityBadge(incident.severity)}>{incident.severity}</Badge>
-                    </div>
-                     <div className="flex justify-between">
-                        <span className="text-muted-foreground">Sector:</span>
-                        <span>{incident.sector}</span>
-                    </div>
-                    <div className="flex justify-between">
-                        <span className="text-muted-foreground">Incident Type:</span>
-                        <span>{incident.incident_type}</span>
-                    </div>
-                </div>
-            </div>
-             <div className="rounded-lg border bg-card text-card-foreground p-6">
-                <h3 className="font-headline text-lg font-semibold mb-4 flex items-center"><Building className="mr-2 h-5 w-5 text-primary" />Affected Entities</h3>
-                <ul className="space-y-2 text-sm">
-                    {incident.affected_entities.map(entity => (
-                        <li key={entity} className="flex items-center">{entity}</li>
-                    ))}
-                </ul>
-            </div>
-        </div>
+                {/* Impact */}
+                 <Card>
+                    <CardHeader><CardTitle className="flex items-center"><AlertTriangle className="mr-2 text-destructive"/>Impact</CardTitle></CardHeader>
+                    <CardContent className="space-y-4">
+                        <div>
+                            <h4 className="font-semibold">Organizational Impact</h4>
+                            <p className="text-muted-foreground text-sm">Widespread power outage affecting 2 million people for 12 hours.</p>
+                        </div>
+                         <div>
+                            <h4 className="font-semibold">Financial Impact</h4>
+                            <p className="text-muted-foreground text-sm">Estimated economic loss of over $100 million.</p>
+                        </div>
+                    </CardContent>
+                </Card>
 
-        <div className="mb-8">
-            <h3 className="font-headline text-lg font-semibold mb-4 flex items-center"><LinkIcon className="mr-2 h-5 w-5 text-primary" />Sources</h3>
-            <ul className="space-y-2">
-                {incident.sources.map(source => (
-                    <li key={source.url}>
-                        <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-2">
-                           <LinkIcon className="h-4 w-4" /> {source.title}
-                        </a>
-                    </li>
-                ))}
-            </ul>
+                {/* Source References */}
+                <Card>
+                    <CardHeader><CardTitle>Source References</CardTitle></CardHeader>
+                    <CardContent>
+                         <ul className="space-y-3">
+                            {incident.sources.map(source => (
+                                <li key={source.url} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
+                                    <div className="flex items-center gap-3">
+                                        <FileText className="h-5 w-5 text-primary" />
+                                        <div>
+                                            <p className="font-semibold">{source.title}</p>
+                                            <p className="text-sm text-muted-foreground">Official Report</p>
+                                        </div>
+                                    </div>
+                                    <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+                                        View &rarr;
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </CardContent>
+                </Card>
+
+                {/* Verification Status */}
+                <Card>
+                    <CardHeader><CardTitle>Verification Status</CardTitle></CardHeader>
+                    <CardContent className="flex items-center gap-4">
+                         <CheckCircle2 className="h-8 w-8 text-green-500" />
+                         <div>
+                            <p className="font-semibold">Verified</p>
+                            <p className="text-sm text-muted-foreground">Verified by CERT-In and international cybersecurity agencies.</p>
+                         </div>
+                    </CardContent>
+                </Card>
+
+                <IncidentSimilarity currentIncident={incident} allIncidents={allIncidents} isPrimaryButton={true}/>
+            </div>
+
+            <div className="space-y-8">
+                {/* Incident Details */}
+                <Card>
+                    <CardHeader><CardTitle>Incident Details</CardTitle></CardHeader>
+                    <CardContent className="space-y-4 text-sm">
+                        <div className="flex items-start gap-3">
+                            <Calendar className="h-4 w-4 mt-1 text-muted-foreground" />
+                            <div>
+                                <p className="text-muted-foreground">Date of Incident</p>
+                                <p className="font-semibold">{new Date(incident.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                            </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <Building className="h-4 w-4 mt-1 text-muted-foreground" />
+                            <div>
+                                <p className="text-muted-foreground">Organization</p>
+                                <p className="font-semibold">{incident.affected_entities.join(', ')}</p>
+                            </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <Tag className="h-4 w-4 mt-1 text-muted-foreground" />
+                            <div>
+                                <p className="text-muted-foreground">Sector</p>
+                                <p className="font-semibold">{incident.sector}</p>
+                            </div>
+                        </div>
+                         <div className="flex items-start gap-3">
+                            <AlertTriangle className="h-4 w-4 mt-1 text-muted-foreground" />
+                            <div>
+                                <p className="text-muted-foreground">Incident Type</p>
+                                <p className="font-semibold">{incident.incident_type}</p>
+                            </div>
+                        </div>
+                         <div className="flex items-start gap-3">
+                            <Server className="h-4 w-4 mt-1 text-muted-foreground" />
+                            <div>
+                                <p className="text-muted-foreground">Attack Method</p>
+                                <p className="font-semibold">{incident.attack_method}</p>
+                            </div>
+                        </div>
+                         <div className="flex items-start gap-3">
+                            <Shield className="h-4 w-4 mt-1 text-muted-foreground" />
+                            <div>
+                                <p className="text-muted-foreground">Root Cause</p>
+                                <p className="font-semibold">{incident.root_cause}</p>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
+
+                {/* Quick Actions */}
+                <Card>
+                    <CardHeader><CardTitle>Quick Actions</CardTitle></CardHeader>
+                    <CardContent className="space-y-2">
+                        <IncidentSimilarity currentIncident={incident} allIncidents={allIncidents} />
+                        <Button variant="outline" className="w-full justify-start">
+                            <Eye className="mr-2 h-4 w-4" /> Browse {incident.sector} Incidents
+                        </Button>
+                        <Button variant="outline" className="w-full justify-start">
+                             <AlertTriangle className="mr-2 h-4 w-4" /> Similar Attack Types
+                        </Button>
+                    </CardContent>
+                </Card>
+
+                 {/* Incident ID */}
+                <Card>
+                    <CardHeader><CardTitle>Incident ID</CardTitle></CardHeader>
+                    <CardContent className="space-y-4">
+                        <Badge variant="secondary">INC-2025-001</Badge>
+                        <Button variant="outline" className="w-full justify-start" onClick={handleExport}>
+                           <FileJson className="mr-2 h-4 w-4" /> Export JSON
+                        </Button>
+                    </CardContent>
+                </Card>
+
+            </div>
         </div>
-        
-        <IncidentSimilarity currentIncident={incident} allIncidents={otherIncidents} />
       </div>
     </div>
   );
