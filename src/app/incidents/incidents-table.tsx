@@ -101,8 +101,8 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
       let valA, valB;
       if (sortKey === 'severity') {
         const severityOrder = { Critical: 4, High: 3, Medium: 2, Low: 1 };
-        valA = severityOrder[a.severity];
-        valB = severityOrder[b.severity];
+        valA = severityOrder[a.severity as keyof typeof severityOrder] || 0;
+        valB = severityOrder[b.severity as keyof typeof severityOrder] || 0;
       } else {
         valA = a[sortKey];
         valB = b[sortKey];

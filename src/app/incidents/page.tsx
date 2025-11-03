@@ -1,11 +1,22 @@
 
 import { incidents } from '@/lib/data';
-import { IncidentsTable } from './incidents-table';
 import { Suspense } from 'react';
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export const metadata = {
   title: 'Incident Database | Vidura',
 };
+
+const IncidentsTableClient = dynamic(() => import('./incidents-table-client'), {
+  ssr: false,
+  loading: () => (
+    <div className="space-y-4">
+      <Skeleton className="h-24 w-full" />
+      <Skeleton className="h-96 w-full" />
+    </div>
+  )
+});
 
 // This component will be wrapped in a Suspense boundary
 // so the page can render while search params are being read.
@@ -20,7 +31,7 @@ function PageContent() {
           Search and filter through cybersecurity incidents in India (2000-2025). This is a static snapshot; in a real-world application, this data would be connected to a live feed for automatic updates.
         </p>
       </div>
-      <IncidentsTable data={incidents} />
+      <IncidentsTableClient data={incidents} />
     </div>
   );
 }
