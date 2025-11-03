@@ -18,7 +18,7 @@ export default function AuthorPage() {
       <div className="w-full max-w-2xl">
         <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-xl shadow-lg p-8 text-center flex flex-col items-center">
             <Avatar className="w-24 h-24 mb-4 border-4 border-primary/20">
-                <AvatarImage src="https://i.pravatar.cc/150?u=aayushdas" alt="Ayush Das" />
+                <AvatarImage src="/aayush.jpeg" alt="Ayush Das" />
                 <AvatarFallback>AD</AvatarFallback>
             </Avatar>
             <h2 className="text-3xl font-bold text-foreground">Ayush Das</h2>
