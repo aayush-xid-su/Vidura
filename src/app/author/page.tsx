@@ -24,7 +24,7 @@ export default function AuthorPage() {
             <h2 className="text-2xl font-bold font-headline text-foreground">Ayush Das</h2>
             <p className="text-primary font-medium mb-6 text-base">cybersecurity enthusiast</p>
             <p className="text-base text-muted-foreground max-w-md mx-auto mb-8">
-                I am a passionate cybersecurity enthusiast and web developer with a love for creating innovative and impactful applications. This project is a demonstration of how to analyze and understand complex datasets like cybersecurity incidents.
+                I am a passionate cybersecurity enthusiast and web developer with a love for creating innovative and impactful applications. Just a boy who loves to play with code and always does nerdshit 😎
             </p>
             <div className="flex flex-wrap justify-center gap-4">
                 <Button variant="secondary" asChild>
