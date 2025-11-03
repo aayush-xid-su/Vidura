@@ -38,10 +38,10 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
   const [isPending, startTransition] = useTransition();
 
   const [keyword, setKeyword] = useState(() => searchParams.get('search') || '');
-  const [year, setYear] = useState(() => searchParams.get('year') || 'all');
-  const [sector, setSector] = useState(() => searchParams.get('sector') || 'all');
-  const [type, setType] = useState(() => searchParams.get('type') || 'all');
-  const [severity, setSeverity] = useState(() => searchParams.get('severity') || 'all');
+  const [year, setYear] = useState(() => searchParams.get('year') || '');
+  const [sector, setSector] = useState(() => searchParams.get('sector') || '');
+  const [type, setType] = useState(() => searchParams.get('type') || '');
+  const [severity, setSeverity] = useState(() => searchParams.get('severity') || '');
   const [currentPage, setCurrentPage] = useState(1);
   const [sortKey, setSortKey] = useState<SortKey>('title');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
@@ -55,7 +55,7 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
   const updateURLParams = (params: Record<string, string>) => {
     const currentParams = new URLSearchParams(searchParams.toString());
     Object.entries(params).forEach(([key, value]) => {
-      if (value && value !== 'all') {
+      if (value) {
         currentParams.set(key, value);
       } else {
         currentParams.delete(key);
@@ -67,9 +67,10 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
   };
 
   const handleFilterChange = (setter: (value: string) => void, paramName: string) => (value: string) => {
-    setter(value);
+    const newValue = value === 'all' ? '' : value;
+    setter(newValue);
     setCurrentPage(1);
-    updateURLParams({ [paramName]: value });
+    updateURLParams({ [paramName]: newValue });
   };
   
   const handleKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -87,10 +88,10 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
           item.title.toLowerCase().includes(keyword.toLowerCase()) ||
           item.description.toLowerCase().includes(keyword.toLowerCase()) ||
           item.sector.toLowerCase().includes(keyword.toLowerCase())) &&
-        (year === 'all' || itemYear === year) &&
-        (sector === 'all' || item.sector === sector) &&
-        (type === 'all' || item.incident_type === type) &&
-        (severity === 'all' || item.severity === severity)
+        (year === '' || itemYear === year) &&
+        (sector === '' || item.sector === sector) &&
+        (type === '' || item.incident_type === type) &&
+        (severity === '' || item.severity === severity)
       );
     });
 
