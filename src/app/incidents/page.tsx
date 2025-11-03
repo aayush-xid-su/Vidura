@@ -3,13 +3,13 @@ import { incidents } from '@/lib/data';
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
+import IncidentsTableClient from './incidents-table-client';
 
 export const metadata = {
   title: 'Incident Database | Vidura',
 };
 
-const IncidentsTableClient = dynamic(() => import('./incidents-table-client'), {
-  ssr: false,
+const IncidentsTableDynamic = dynamic(() => import('./incidents-table-client'), {
   loading: () => (
     <div className="space-y-4">
       <Skeleton className="h-24 w-full" />
