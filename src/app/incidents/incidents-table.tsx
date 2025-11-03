@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useMemo, useTransition } from 'react';
+import { useState, useMemo } from 'react';
 import type { Incident } from '@/lib/types';
 import {
   Table,
@@ -25,79 +25,53 @@ import { exportToCsv, exportToJson } from '@/lib/utils';
 import Link from 'next/link';
 import { PaginationControls } from '@/components/pagination-controls';
 import { FileJson, FileText, Search, Link as LinkIcon } from 'lucide-react';
-import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 const ITEMS_PER_PAGE = 10;
 
 type SortKey = 'title' | 'sector' | 'severity';
 type SortDirection = 'asc' | 'desc';
 
-export function IncidentsTable({ data }: { data: Incident[] }) {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
-  const [isPending, startTransition] = useTransition();
+interface IncidentsTableProps {
+    data: Incident[];
+    allIncidents: Incident[];
+    keyword: string;
+    year: string;
+    sector: string;
+    type: string;
+    severity: string;
+    currentPage: number;
+    handleKeywordChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleFilterChange: (setter: (value: string) => void, paramName: string) => (value: string) => void;
+    setCurrentPage: (page: number) => void;
+}
 
-  const [keyword, setKeyword] = useState(() => searchParams.get('search') || '');
-  const [year, setYear] = useState(() => searchParams.get('year') || '');
-  const [sector, setSector] = useState(() => searchParams.get('sector') || '');
-  const [type, setType] = useState(() => searchParams.get('type') || '');
-  const [severity, setSeverity] = useState(() => searchParams.get('severity') || '');
-  const [currentPage, setCurrentPage] = useState(1);
+
+export function IncidentsTable({ 
+    data,
+    allIncidents,
+    keyword,
+    year,
+    sector,
+    type,
+    severity,
+    currentPage,
+    handleKeywordChange,
+    handleFilterChange,
+    setCurrentPage
+}: IncidentsTableProps) {
+  
   const [sortKey, setSortKey] = useState<SortKey>('title');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
 
-  const uniqueSectors = useMemo(() => [...new Set(data.map((d) => d.sector))], [data]);
-  const uniqueYears = useMemo(() => [...new Set(data.map((d) => new Date(d.date).getFullYear().toString()))].sort((a,b) => b.localeCompare(a)), [data]);
-  const uniqueTypes = useMemo(() => [...new Set(data.map((d) => d.incident_type))], [data]);
+  const uniqueSectors = useMemo(() => [...new Set(allIncidents.map((d) => d.sector))], [allIncidents]);
+  const uniqueYears = useMemo(() => [...new Set(allIncidents.map((d) => new Date(d.date).getFullYear().toString()))].sort((a,b) => b.localeCompare(a)), [allIncidents]);
+  const uniqueTypes = useMemo(() => [...new Set(allIncidents.map((d) => d.incident_type))], [allIncidents]);
   const uniqueSeverities = ['Critical', 'High', 'Medium', 'Low'];
 
-
-  const updateURLParams = (params: Record<string, string>) => {
-    const currentParams = new URLSearchParams(searchParams.toString());
-    Object.entries(params).forEach(([key, value]) => {
-      if (value) {
-        currentParams.set(key, value);
-      } else {
-        currentParams.delete(key);
-      }
-    });
-    startTransition(() => {
-        router.replace(`${pathname}?${currentParams.toString()}`);
-    });
-  };
-
-  const handleFilterChange = (setter: (value: string) => void, paramName: string) => (value: string) => {
-    const newValue = value === 'all' ? '' : value;
-    setter(newValue);
-    setCurrentPage(1);
-    updateURLParams({ [paramName]: newValue });
-  };
-  
-  const handleKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyword(e.target.value);
-    setCurrentPage(1);
-    updateURLParams({ 'search': e.target.value });
-  };
-
-
-  const filteredData = useMemo(() => {
-    let filtered = data.filter((item) => {
-      const itemYear = new Date(item.date).getFullYear().toString();
-      return (
-        (keyword === '' ||
-          item.title.toLowerCase().includes(keyword.toLowerCase()) ||
-          item.description.toLowerCase().includes(keyword.toLowerCase()) ||
-          item.sector.toLowerCase().includes(keyword.toLowerCase())) &&
-        (year === '' || itemYear === year) &&
-        (sector === '' || item.sector === sector) &&
-        (type === '' || item.incident_type === type) &&
-        (severity === '' || item.severity === severity)
-      );
-    });
-
+  const sortedData = useMemo(() => {
+    let sorted = [...data];
     // Sorting logic
-    filtered.sort((a, b) => {
+    sorted.sort((a, b) => {
       let valA, valB;
       if (sortKey === 'severity') {
         const severityOrder = { Critical: 4, High: 3, Medium: 2, Low: 1 };
@@ -117,11 +91,11 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
       return 0;
     });
 
-    return filtered;
-  }, [data, keyword, year, sector, type, severity, sortKey, sortDirection]);
+    return sorted;
+  }, [data, sortKey, sortDirection]);
 
-  const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
-  const paginatedData = filteredData.slice(
+  const totalPages = Math.ceil(sortedData.length / ITEMS_PER_PAGE);
+  const paginatedData = sortedData.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
@@ -135,8 +109,8 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
     }
   };
 
-  const getSeverityBadge = (severity: Incident['severity']) => {
-    switch (severity) {
+  const getSeverityBadge = (severityValue: Incident['severity']) => {
+    switch (severityValue) {
       case 'Critical':
         return 'destructive';
       case 'High':
@@ -164,7 +138,7 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
             />
           </div>
 
-          <Select value={year} onValueChange={handleFilterChange(setYear, 'year')}>
+          <Select value={year} onValueChange={handleFilterChange(d => {}, 'year')}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Year" />
             </SelectTrigger>
@@ -178,7 +152,7 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
             </SelectContent>
           </Select>
 
-          <Select value={sector} onValueChange={handleFilterChange(setSector, 'sector')}>
+          <Select value={sector} onValueChange={handleFilterChange(d => {}, 'sector')}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Sector" />
             </SelectTrigger>
@@ -192,7 +166,7 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
             </SelectContent>
           </Select>
 
-          <Select value={type} onValueChange={handleFilterChange(setType, 'type')}>
+          <Select value={type} onValueChange={handleFilterChange(d => {}, 'type')}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Incident Type" />
             </SelectTrigger>
@@ -206,7 +180,7 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
             </SelectContent>
           </Select>
 
-          <Select value={severity} onValueChange={handleFilterChange(setSeverity, 'severity')}>
+          <Select value={severity} onValueChange={handleFilterChange(d => {}, 'severity')}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Severity" />
             </SelectTrigger>
@@ -225,7 +199,7 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
             <Button
               variant="outline"
               size="sm"
-              onClick={() => exportToJson('incidents', filteredData)}
+              onClick={() => exportToJson('incidents', sortedData)}
             >
               <FileJson className="mr-2 h-4 w-4" />
               JSON
@@ -233,7 +207,7 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
             <Button
               variant="outline"
               size="sm"
-              onClick={() => exportToCsv('incidents', filteredData)}
+              onClick={() => exportToCsv('incidents', sortedData)}
             >
               <FileText className="mr-2 h-4 w-4" />
               CSV
