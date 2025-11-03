@@ -3,7 +3,7 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
-import { ThemeProvider } from '@/components/theme-provider';
+import { ClientProviders } from '@/components/client-providers';
 import { Footer } from '@/components/layout/footer';
 import { Inter, Space_Grotesk } from 'next/font/google';
 
@@ -29,17 +29,12 @@ export default function RootLayout({
           fontHeadline.variable
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ClientProviders>
           <Header />
           <main className="flex-1 flex flex-col">{children}</main>
           <Footer />
           <Toaster />
-        </ThemeProvider>
+        </ClientProviders>
       </body>
     </html>
   );
