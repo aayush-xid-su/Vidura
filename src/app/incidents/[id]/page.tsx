@@ -7,20 +7,16 @@ import {
     Tag, 
     Shield, 
     Building, 
-    Link as LinkIcon, 
-    AlertTriangle, 
     ArrowLeft,
-    FileText,
-    Eye,
+    AlertTriangle, 
     Server,
-    FileJson,
     CheckCircle2
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { exportToJson } from '@/lib/utils';
 import { IncidentSimilarity } from './incident-similarity-client';
+import { IncidentDetailClient } from './incident-detail-client';
 
 export function generateStaticParams() {
   return incidents.map((incident) => ({
@@ -60,11 +56,6 @@ export default function IncidentDetailPage({ params }: { params: { id: string } 
   
   const allIncidents = incidents;
 
-  const handleExport = () => {
-    'use client';
-    exportToJson(`incident-${incident.id}`, incident);
-  }
-
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="max-w-6xl mx-auto">
@@ -89,57 +80,17 @@ export default function IncidentDetailPage({ params }: { params: { id: string } 
                     <CardContent><p className="text-muted-foreground">{incident.description}</p></CardContent>
                 </Card>
 
-                {/* Impact */}
-                 <Card>
-                    <CardHeader><CardTitle className="flex items-center"><AlertTriangle className="mr-2 text-destructive"/>Impact</CardTitle></CardHeader>
-                    <CardContent className="space-y-4">
-                        <div>
-                            <h4 className="font-semibold">Organizational Impact</h4>
-                            <p className="text-muted-foreground text-sm">Widespread power outage affecting 2 million people for 12 hours.</p>
-                        </div>
-                         <div>
-                            <h4 className="font-semibold">Financial Impact</h4>
-                            <p className="text-muted-foreground text-sm">Estimated economic loss of over $100 million.</p>
-                        </div>
-                    </CardContent>
-                </Card>
-
-                {/* Source References */}
+                 {/* Verification Status */}
                 <Card>
-                    <CardHeader><CardTitle>Source References</CardTitle></CardHeader>
+                    <CardHeader><CardTitle className="flex items-center gap-2"><CheckCircle2 className="text-green-500"/>Verification Status</CardTitle></CardHeader>
                     <CardContent>
-                         <ul className="space-y-3">
-                            {incident.sources.map(source => (
-                                <li key={source.url} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
-                                    <div className="flex items-center gap-3">
-                                        <FileText className="h-5 w-5 text-primary" />
-                                        <div>
-                                            <p className="font-semibold">{source.title}</p>
-                                            <p className="text-sm text-muted-foreground">Official Report</p>
-                                        </div>
-                                    </div>
-                                    <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
-                                        View &rarr;
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </CardContent>
-                </Card>
-
-                {/* Verification Status */}
-                <Card>
-                    <CardHeader><CardTitle>Verification Status</CardTitle></CardHeader>
-                    <CardContent className="flex items-center gap-4">
-                         <CheckCircle2 className="h-8 w-8 text-green-500" />
                          <div>
                             <p className="font-semibold">Verified</p>
                             <p className="text-sm text-muted-foreground">Verified by CERT-In and international cybersecurity agencies.</p>
                          </div>
                     </CardContent>
                 </Card>
-
-                <IncidentSimilarity currentIncident={incident} allIncidents={allIncidents} isPrimaryButton={true}/>
+                <IncidentDetailClient incident={incident} allIncidents={allIncidents} />
             </div>
 
             <div className="space-y-8">
@@ -192,30 +143,7 @@ export default function IncidentDetailPage({ params }: { params: { id: string } 
                     </CardContent>
                 </Card>
 
-                {/* Quick Actions */}
-                <Card>
-                    <CardHeader><CardTitle>Quick Actions</CardTitle></CardHeader>
-                    <CardContent className="space-y-2">
-                        <IncidentSimilarity currentIncident={incident} allIncidents={allIncidents} />
-                        <Button variant="outline" className="w-full justify-start">
-                            <Eye className="mr-2 h-4 w-4" /> Browse {incident.sector} Incidents
-                        </Button>
-                        <Button variant="outline" className="w-full justify-start">
-                             <AlertTriangle className="mr-2 h-4 w-4" /> Similar Attack Types
-                        </Button>
-                    </CardContent>
-                </Card>
-
-                 {/* Incident ID */}
-                <Card>
-                    <CardHeader><CardTitle>Incident ID</CardTitle></CardHeader>
-                    <CardContent className="space-y-4">
-                        <Badge variant="secondary">INC-2025-001</Badge>
-                        <Button variant="outline" className="w-full justify-start" onClick={handleExport}>
-                           <FileJson className="mr-2 h-4 w-4" /> Export JSON
-                        </Button>
-                    </CardContent>
-                </Card>
+                <IncidentDetailClient incident={incident} allIncidents={allIncidents} isQuickActions />
 
             </div>
         </div>
