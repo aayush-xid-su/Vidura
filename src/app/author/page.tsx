@@ -19,7 +19,7 @@ export default function AuthorPage() {
       <div className="w-full max-w-2xl mt-32 md:mt-0">
         <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-xl shadow-lg p-8 text-center flex flex-col items-center">
             <Avatar className="w-24 h-24 mb-4 border-4 border-primary/20">
-                <AvatarImage src="/aayush.jpeg" alt="Ayush Das" />
+                <AvatarImage src="https://picsum.photos/seed/author/200/200" alt="Ayush Das" className="object-cover" data-ai-hint="man portrait" />
                 <AvatarFallback>AD</AvatarFallback>
             </Avatar>
             <h2 className="text-2xl font-bold font-headline text-foreground">Ayush Das</h2>
@@ -29,19 +29,19 @@ export default function AuthorPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
                 <Button variant="secondary" asChild>
-                    <a href="https://github.com/aayush-xid-su" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/aayush-xid-su" target="_blank" rel="noopener noreferrer" className="hover:underline">
                         <Github className="mr-2 h-4 w-4" />
                         GitHub
                     </a>
                 </Button>
                 <Button variant="secondary" asChild>
-                    <a href="https://linkedin.com/in/ayushdas-11am" target="_blank" rel="noopener noreferrer">
+                    <a href="https://linkedin.com/in/ayushdas-11am" target="_blank" rel="noopener noreferrer" className="hover:underline">
                         <Linkedin className="mr-2 h-4 w-4" />
                         LinkedIn
                     </a>
                 </Button>
                 <Button variant="secondary" asChild>
-                     <a href="https://ayush11profile.netlify.app/" target="_blank" rel="noopener noreferrer">
+                     <a href="https://ayush11profile.netlify.app/" target="_blank" rel="noopener noreferrer" className="hover:underline">
                         <User className="mr-2 h-4 w-4" />
                         Portfolio
                     </a>
