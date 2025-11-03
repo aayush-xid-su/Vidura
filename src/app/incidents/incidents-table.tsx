@@ -41,7 +41,7 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
   const [year, setYear] = useState(() => searchParams.get('year') || 'all');
   const [sector, setSector] = useState(() => searchParams.get('sector') || 'all');
   const [type, setType] = useState(() => searchParams.get('type') || 'all');
-  const [severity, setSeverity] = useState(() => search_params.get('severity') || 'all');
+  const [severity, setSeverity] = useState(() => searchParams.get('severity') || 'all');
   const [currentPage, setCurrentPage] = useState(1);
   const [sortKey, setSortKey] = useState<SortKey>('title');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
