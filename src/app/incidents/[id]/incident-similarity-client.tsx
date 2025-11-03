@@ -36,12 +36,7 @@ export function IncidentSimilarity({ currentIncident, allIncidents, isPrimaryBut
         knownIncidentDetails,
       });
       
-      const similarIds = result.map(res => {
-        const match = res.match(/ID: ([\w-]+)/);
-        return match ? match[1] : null;
-      }).filter(Boolean);
-
-      const foundIncidents = allIncidents.filter(inc => similarIds.includes(inc.id));
+      const foundIncidents = allIncidents.filter(inc => result.includes(inc.id));
       setSimilarIncidents(foundIncidents);
       if (foundIncidents.length > 0) {
         setIsOpen(true);
@@ -84,9 +79,9 @@ export function IncidentSimilarity({ currentIncident, allIncidents, isPrimaryBut
         {isLoading ? (
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
         ) : (
-            isPrimaryButton ? <Sparkles className="mr-2 h-4 w-4" /> : <Eye className="mr-2 h-4 w-4" />
+            isPrimaryButton ? <Sparkles className="mr-2 h-4 w-4" /> : <Sparkles className="mr-2 h-4 w-4" />
         )}
-        {isLoading ? 'Analyzing...' : (isPrimaryButton ? 'View Similar Incidents' : 'View Similar Incidents')}
+        {isLoading ? 'Analyzing...' : 'Find Similar Incidents'}
     </Button>
   );
 

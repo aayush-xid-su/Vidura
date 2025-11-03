@@ -1,6 +1,7 @@
 'use server';
-
-// This file contains the Genkit flow for finding incidents similar to a selected incident using AI analysis.
+/**
+ * @fileOverview A Genkit flow for finding incidents similar to a selected incident using AI analysis.
+ */
 import { config } from 'dotenv';
 config();
 
@@ -8,13 +9,13 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const IncidentSimilarityInputSchema = z.object({
-  incidentDetails: z.string().describe('Detailed information about the incident.'),
-  knownIncidentDetails: z.array(z.string()).describe('Details of known incidents to compare against.'),
+  incidentDetails: z.string().describe('Detailed information about the incident, including its title and description.'),
+  knownIncidentDetails: z.array(z.string()).describe('A list of known incidents to compare against, each formatted with its ID, title, and description.'),
 });
 
 export type IncidentSimilarityInput = z.infer<typeof IncidentSimilarityInputSchema>;
 
-const IncidentSimilarityOutputSchema = z.array(z.string()).describe('An array of similar incident details.');
+const IncidentSimilarityOutputSchema = z.array(z.string()).describe('An array of the string IDs of the top 3 most similar incidents.');
 
 export type IncidentSimilarityOutput = z.infer<typeof IncidentSimilarityOutputSchema>;
 
@@ -27,17 +28,20 @@ const incidentSimilarityPrompt = ai.definePrompt({
   input: {schema: IncidentSimilarityInputSchema},
   output: {schema: IncidentSimilarityOutputSchema},
   prompt: `You are an AI assistant specializing in cybersecurity incident analysis.
+  Your task is to identify the known incidents that are most similar to a specific incident based on the provided details.
 
-  Given the details of a specific incident and a list of known incidents, your task is to identify the known incidents that are most similar to the specific incident.
+  Incident to Analyze:
+  {{{incidentDetails}}}
 
-  Incident Details: {{{incidentDetails}}}
-
-  Known Incidents:
+  List of Known Incidents (with their IDs):
   {{#each knownIncidentDetails}}
   - {{{this}}}
   {{/each}}
 
-  Provide a JSON array containing only the details of the incidents most similar to the Incident Details provided. Explain why each incident you selected is considered similar. Limit the output to the top 3 most similar incidents, if that many exist. Return an empty array if there are no similar incidents.
+  Compare the "Incident to Analyze" with the "List of Known Incidents".
+  Based on your analysis of the attack vectors, targets, and methods, return a JSON array containing the string IDs of the top 3 most similar incidents.
+  For example: ["incident-id-1", "incident-id-2", "incident-id-3"].
+  Return an empty array if no similar incidents are found.
   `,
 });
 
