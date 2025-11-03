@@ -1,3 +1,4 @@
+
 'use client';
 
 import { usePathname } from 'next/navigation';
@@ -78,27 +79,105 @@ export function Header() {
             </TooltipProvider>
             <DialogContent className="max-w-3xl">
               <DialogHeader>
-                <DialogTitle className="text-3xl font-headline font-bold mb-2">About Vidura</DialogTitle>
+                <DialogTitle className="text-3xl font-headline font-bold mb-2">🧭 About Vidura</DialogTitle>
               </DialogHeader>
-              <div className="prose dark:prose-invert max-w-none text-muted-foreground">
+              <div className="prose dark:prose-invert max-w-none text-muted-foreground h-[70vh] overflow-y-auto pr-4">
+                <h2 className="text-2xl font-headline font-semibold mt-4 mb-2">What is Vidura?</h2>
                 <p>
-                  Vidura is a fictional project created to demonstrate the capabilities of a cybersecurity incident tracking and analysis platform. The name "Vidura" is inspired by a wise figure from the Indian epic, the Mahabharata, known for his foresight and counsel.
+                  Vidura is an independent cybersecurity research initiative dedicated to systematically documenting cyber incidents in India over the past 25 years (2000–2025). It serves as a centralized knowledge base that captures verified details of cyberattacks, data breaches, and security lapses that have shaped India’s digital security landscape.
                 </p>
                 <p>
-                  This application provides a browsable, searchable, and filterable database of mock cybersecurity incidents in India from 2000-2025. It is intended as a portfolio piece and a technical showcase, not a source of real-world, up-to-the-minute threat intelligence.
+                  Through structured data, credible sources, and transparent documentation, Vidura aims to preserve the nation’s cyber history while supporting research, awareness, and policy development.
                 </p>
-                <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">Technical Stack</h2>
+
+                <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">Who created Vidura?</h2>
+                <p>
+                  Vidura was conceptualized, researched, and developed by <a href="https://github.com/aayush-xid-su" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Ayush das</a>, an independent cybersecurity researcher and technology enthusiast passionate about building a safer digital future for India. Driven by a vision to make cybersecurity knowledge accessible and verifiable, Ayush designed Vidura as a public-interest research platform to document India’s evolving cyber threat landscape over the last 25 years. Through meticulous research, structured data design, and technical implementation, Ayush has created a first-of-its-kind open database that bridges the gap between cybersecurity incidents, academic research, and public awareness.
+                </p>
+                <p>Ayush's work reflects a deep commitment to:</p>
                 <ul>
-                  <li><strong>Framework:</strong> Next.js (App Router)</li>
-                  <li><strong>Language:</strong> TypeScript</li>
-                  <li><strong>Styling:</strong> Tailwind CSS</li>
-                  <li><strong>UI Components:</strong> shadcn/ui</li>
-                  <li><strong>AI/Generative Features:</strong> Google Genkit</li>
+                  <li>🧠 <strong>Knowledge Transparency</strong> – Making credible cyber incident data publicly available.</li>
+                  <li>🛡️ <strong>National Cyber Awareness</strong> – Educating citizens and professionals about India’s digital vulnerabilities.</li>
+                  <li>⚙️ <strong>Open Research Collaboration</strong> – Encouraging data-driven study and community contributions to cyber defense efforts.</li>
                 </ul>
-                <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">Disclaimer</h2>
+
+                <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">Why Vidura Was Created</h2>
                 <p>
-                  All data within this application, including incident details, dates, affected entities, and sources, is entirely fictional and generated for demonstration purposes. It should not be used for professional analysis or decision-making. Any resemblance to real incidents or entities is purely coincidental.
+                  India’s rapid digital transformation has brought both innovation and vulnerability. Despite numerous incidents affecting government bodies, corporations, and individuals, there was no single, reliable repository documenting these events in a structured and research-friendly manner.
                 </p>
+                <p>
+                  Vidura was created to fill this gap — to ensure that no major cybersecurity incident in India is forgotten, overlooked, or undocumented.
+                </p>
+                <p>Our goals are:</p>
+                <ul>
+                    <li>🗂️ <strong>Comprehensive Documentation</strong> — Record major cyber incidents from credible sources.</li>
+                    <li>📈 <strong>Research & Analysis</strong> — Enable trend studies, threat pattern analysis, and risk modeling.</li>
+                    <li>🧠 <strong>Education & Awareness</strong> — Help students, journalists, and policymakers understand India’s evolving threat landscape.</li>
+                    <li>🛡️ <strong>Strategic Insight</strong> — Support informed cybersecurity decisions through historical context.</li>
+                </ul>
+
+                <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">How Vidura Works</h2>
+                <p>Vidura compiles verified information from:</p>
+                <ul>
+                    <li>CERT-In advisories and government reports</li>
+                    <li>Academic research papers and threat intelligence publications</li>
+                    <li>Verified news sources and public disclosures</li>
+                </ul>
+                <p>Each incident is:</p>
+                <ul>
+                    <li>Collected from multiple credible sources</li>
+                    <li>Cross-verified with at least two independent references</li>
+                    <li>Categorized by type, sector, and impact</li>
+                    <li>Documented in a structured JSON/CSV dataset with complete metadata</li>
+                </ul>
+                <p>The result is a publicly accessible database that researchers, educators, and professionals can explore through our website’s searchable interface.</p>
+                
+                <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">Our Methodology</h2>
+                <p>Vidura follows a standardized, transparent methodology for consistency and credibility:</p>
+                <ul>
+                    <li><strong>Source Collection:</strong> Only verifiable and publicly available information is included.</li>
+                    <li><strong>Verification:</strong> Every incident is validated using ≥2 credible references.</li>
+                    <li><strong>Classification:</strong> Incidents are categorized by year, sector, method, and impact.</li>
+                    <li><strong>Documentation:</strong> Each record includes description, sources, and verification status.</li>
+                </ul>
+                <p>This approach ensures academic reliability and long-term research value.</p>
+                
+                <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">Scope of Coverage</h2>
+                <ul>
+                    <li><strong>Timeline:</strong> 2000–2025 and continue</li>
+                    <li><strong>Sectors:</strong> Government, Banking, Healthcare, Telecom, Defense, Energy, IT, Education, and more</li>
+                    <li><strong>Incidents Covered:</strong> Over 200 verified cases involving 120+ organizations</li>
+                </ul>
+                
+                <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">Ethics & Transparency</h2>
+                <p>
+                    Vidura is built on a foundation of open knowledge and ethical research. All information is sourced from publicly available reports and official statements. The data and analysis provided on this website are for educational and informational purposes only.
+                </p>
+                <p>
+                    We do not publish sensitive or classified data, nor do we attribute blame or liability to any organization.
+                </p>
+                
+                <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">Who Can Use Vidura</h2>
+                <ul>
+                    <li>🧑‍🎓 <strong>Students & Educators:</strong> For coursework, projects, and cybersecurity education.</li>
+                    <li>🧑‍💼 <strong>Researchers & Analysts:</strong> For studying trends and building data-driven insights.</li>
+                    <li>📰 <strong>Journalists:</strong> For referencing verified historical data in news reports.</li>
+                    <li>🧑‍⚖️ <strong>Policy Makers & Security Professionals:</strong> To understand past attack patterns and build better defenses.</li>
+                </ul>
+
+                <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">The Vision Ahead</h2>
+                <p>Vidura aims to grow into a comprehensive open-source repository of India’s cybersecurity history, with tools for visualization, analytics, and collaboration. By learning from the past, we can help build a more secure digital future for India.</p>
+                
+                <blockquote className="border-l-4 border-primary pl-4 italic my-4">
+                    “Cybersecurity history is national history. By documenting where we’ve been attacked, we learn how to defend what matters most. Vidura exists to ensure that India’s cyber lessons are never lost to time.”
+                    <cite className="block not-italic mt-2">— <a href="https://github.com/aayush-xid-su" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Ayush</a>, Creator of Vidura</cite>
+                </blockquote>
+                
+                <h2 className="text-2xl font-headline font-semibold mt-8 mb-2">🛡️ Disclaimer</h2>
+                <p>
+                  All information is sourced from publicly available reports and official statements. The data and analysis provided on this website are for educational and informational purposes only.
+                </p>
+
               </div>
             </DialogContent>
           </Dialog>
@@ -201,3 +280,5 @@ export function Header() {
     </header>
   );
 }
+
+    
