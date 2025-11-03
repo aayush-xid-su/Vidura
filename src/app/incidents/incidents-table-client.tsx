@@ -4,8 +4,9 @@
 import { IncidentsTable } from './incidents-table';
 import type { Incident } from '@/lib/types';
 import { useSearchParams } from 'next/navigation';
-import { useState, useMemo, useTransition } from 'react';
+import { useState, useMemo, useTransition, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function IncidentsTableClient({ data }: { data: Incident[] }) {
     const searchParams = useSearchParams();
@@ -13,12 +14,18 @@ export default function IncidentsTableClient({ data }: { data: Incident[] }) {
     const pathname = usePathname();
     const [isPending, startTransition] = useTransition();
 
+    const [hasMounted, setHasMounted] = useState(false);
+
     const [keyword, setKeyword] = useState(() => searchParams.get('search') || '');
     const [year, setYear] = useState(() => searchParams.get('year') || '');
     const [sector, setSector] = useState(() => searchParams.get('sector') || '');
     const [type, setType] = useState(() => searchParams.get('type') || '');
     const [severity, setSeverity] = useState(() => searchParams.get('severity') || '');
     const [currentPage, setCurrentPage] = useState(1);
+
+    useEffect(() => {
+        setHasMounted(true);
+    }, []);
     
     const updateURLParams = (params: Record<string, string>) => {
         const currentParams = new URLSearchParams(searchParams.toString());
@@ -62,6 +69,15 @@ export default function IncidentsTableClient({ data }: { data: Incident[] }) {
           );
         });
     }, [data, keyword, year, sector, type, severity]);
+
+    if (!hasMounted) {
+      return (
+        <div className="space-y-4">
+          <Skeleton className="h-24 w-full" />
+          <Skeleton className="h-96 w-full" />
+        </div>
+      );
+    }
 
     return (
         <IncidentsTable 
