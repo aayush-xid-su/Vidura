@@ -952,4 +952,3 @@ export const incidents: Incident[] = [
     affected_entities: ['Star Health Insurance'],
   }
 ]
-```
