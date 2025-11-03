@@ -58,7 +58,7 @@ export default function IncidentDetailPage({ params }: { params: { id: string } 
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="max-w-6xl mx-auto">
-        <Link href="/incidents" className="text-sm text-primary hover:underline mb-4 inline-flex items-center gap-2">
+        <Link href="/incidents" className="text-sm text-primary hover:underline mb-4 inline-flex items-center gap-2 transition-transform duration-200 hover:translate-x-[-2px]">
             <ArrowLeft className="h-4 w-4" /> Back to Browse
         </Link>
         <div className="mb-6">
@@ -74,13 +74,13 @@ export default function IncidentDetailPage({ params }: { params: { id: string } 
         <div className="grid md:grid-cols-3 gap-8">
             <div className="md:col-span-2 space-y-8">
                 {/* Incident Description */}
-                <Card>
+                <Card className="transition-shadow duration-300 hover:shadow-lg">
                     <CardHeader><CardTitle className="text-2xl font-headline">Incident Description</CardTitle></CardHeader>
                     <CardContent><p className="text-base text-muted-foreground">{incident.description}</p></CardContent>
                 </Card>
 
-                {/* Impact */}
-                <Card>
+                 {/* Impact */}
+                <Card className="transition-shadow duration-300 hover:shadow-lg">
                     <CardHeader><CardTitle className="flex items-center"><AlertTriangle className="mr-2 text-destructive"/>Impact</CardTitle></CardHeader>
                     <CardContent className="space-y-4">
                         <div>
@@ -95,7 +95,7 @@ export default function IncidentDetailPage({ params }: { params: { id: string } 
                 </Card>
 
                  {/* Verification Status */}
-                <Card>
+                <Card className="transition-shadow duration-300 hover:shadow-lg">
                     <CardHeader><CardTitle className="flex items-center gap-2 text-2xl font-headline"><CheckCircle2 className="text-green-500"/>Verification Status</CardTitle></CardHeader>
                     <CardContent>
                          <div>
@@ -110,7 +110,7 @@ export default function IncidentDetailPage({ params }: { params: { id: string } 
 
             <div className="space-y-8">
                 {/* Incident Details */}
-                <Card>
+                <Card className="transition-shadow duration-300 hover:shadow-lg">
                     <CardHeader><CardTitle className="text-2xl font-headline">Incident Details</CardTitle></CardHeader>
                     <CardContent className="space-y-4 text-sm">
                         <div className="flex items-start gap-3">

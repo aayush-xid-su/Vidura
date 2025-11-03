@@ -23,7 +23,7 @@ export function IncidentDetailClient({ incident, allIncidents, isQuickActions = 
   if (isQuickActions) {
     return (
         <>
-            <Card>
+            <Card className="transition-shadow duration-300 hover:shadow-lg">
                 <CardHeader><CardTitle>Quick Actions</CardTitle></CardHeader>
                 <CardContent className="space-y-2">
                     <IncidentSimilarity currentIncident={incident} allIncidents={allIncidents} />
@@ -35,7 +35,7 @@ export function IncidentDetailClient({ incident, allIncidents, isQuickActions = 
                     </Button>
                 </CardContent>
             </Card>
-            <Card>
+            <Card className="transition-shadow duration-300 hover:shadow-lg">
                 <CardHeader><CardTitle>Incident ID</CardTitle></CardHeader>
                 <CardContent className="space-y-4">
                     <Badge variant="secondary">{incident.id}</Badge>
@@ -51,12 +51,12 @@ export function IncidentDetailClient({ incident, allIncidents, isQuickActions = 
   return (
     <>
       {/* Source References */}
-      <Card>
+      <Card className="transition-shadow duration-300 hover:shadow-lg">
           <CardHeader><CardTitle>Source References</CardTitle></CardHeader>
           <CardContent>
                <ul className="space-y-3">
                   {incident.sources.map(source => (
-                      <li key={source.url} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
+                      <li key={source.url} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg transition-colors hover:bg-muted/60">
                           <div className="flex items-center gap-3">
                               <FileText className="h-5 w-5 text-primary" />
                               <div>
