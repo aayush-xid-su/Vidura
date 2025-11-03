@@ -1,8 +1,8 @@
+'use server';
+
 // This file contains the Genkit flow for finding incidents similar to a selected incident using AI analysis.
 import { config } from 'dotenv';
 config();
-
-'use server';
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
