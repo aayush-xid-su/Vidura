@@ -28,7 +28,7 @@ import { FileJson, FileText, Search, Link as LinkIcon } from 'lucide-react';
 
 const ITEMS_PER_PAGE = 10;
 
-type SortKey = 'title' | 'sector' | 'severity';
+type SortKey = 'title' | 'sector' | 'severity' | 'date';
 type SortDirection = 'asc' | 'desc';
 
 interface IncidentsTableProps {
@@ -60,8 +60,8 @@ export function IncidentsTable({
     setCurrentPage
 }: IncidentsTableProps) {
   
-  const [sortKey, setSortKey] = useState<SortKey>('title');
-  const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
+  const [sortKey, setSortKey] = useState<SortKey>('date');
+  const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
 
   const uniqueSectors = useMemo(() => [...new Set(allIncidents.map((d) => d.sector))], [allIncidents]);
   const uniqueYears = useMemo(() => [...new Set(allIncidents.map((d) => new Date(d.date).getFullYear().toString()))].sort((a,b) => b.localeCompare(a)), [allIncidents]);
@@ -77,9 +77,13 @@ export function IncidentsTable({
         const severityOrder = { Critical: 4, High: 3, Medium: 2, Low: 1 };
         valA = severityOrder[a.severity as keyof typeof severityOrder] || 0;
         valB = severityOrder[b.severity as keyof typeof severityOrder] || 0;
-      } else {
-        valA = a[sortKey];
-        valB = b[sortKey];
+      } else if (sortKey === 'date') {
+        valA = new Date(a.date).getTime();
+        valB = new Date(b.date).getTime();
+      }
+      else {
+        valA = a[sortKey as 'title' | 'sector'];
+        valB = b[sortKey as 'title' | 'sector'];
       }
 
       if (valA < valB) {
@@ -124,6 +128,11 @@ export function IncidentsTable({
     }
   };
 
+  const handleYearChange = handleFilterChange(d => {}, 'year');
+  const handleSectorChange = handleFilterChange(d => {}, 'sector');
+  const handleTypeChange = handleFilterChange(d => {}, 'type');
+  const handleSeverityChange = handleFilterChange(d => {}, 'severity');
+
   return (
     <div className="space-y-4">
       <div className="p-4 border rounded-lg bg-card">
@@ -138,7 +147,7 @@ export function IncidentsTable({
             />
           </div>
 
-          <Select value={year} onValueChange={handleFilterChange(d => {}, 'year')}>
+          <Select value={year} onValueChange={handleYearChange}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Year" />
             </SelectTrigger>
@@ -152,7 +161,7 @@ export function IncidentsTable({
             </SelectContent>
           </Select>
 
-          <Select value={sector} onValueChange={handleFilterChange(d => {}, 'sector')}>
+          <Select value={sector} onValueChange={handleSectorChange}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Sector" />
             </SelectTrigger>
@@ -166,7 +175,7 @@ export function IncidentsTable({
             </SelectContent>
           </Select>
 
-          <Select value={type} onValueChange={handleFilterChange(d => {}, 'type')}>
+          <Select value={type} onValueChange={handleTypeChange}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Incident Type" />
             </SelectTrigger>
@@ -180,7 +189,7 @@ export function IncidentsTable({
             </SelectContent>
           </Select>
 
-          <Select value={severity} onValueChange={handleFilterChange(d => {}, 'severity')}>
+          <Select value={severity} onValueChange={handleSeverityChange}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Severity" />
             </SelectTrigger>
@@ -223,9 +232,7 @@ export function IncidentsTable({
                 <TableHead onClick={() => handleSort('title')}>Incident</TableHead>
                 <TableHead>Organization</TableHead>
                 <TableHead onClick={() => handleSort('sector')}>Sector</TableHead>
-                <TableHead>Incident Type</TableHead>
-                <TableHead>Attack Method</TableHead>
-                <TableHead>Root Cause</TableHead>
+                <TableHead onClick={() => handleSort('date')}>Date</TableHead>
                 <TableHead onClick={() => handleSort('severity')}>Severity</TableHead>
                 <TableHead>Source</TableHead>
               </TableRow>
@@ -241,9 +248,7 @@ export function IncidentsTable({
                     </TableCell>
                     <TableCell>{item.affected_entities[0]}</TableCell>
                     <TableCell><Badge variant="secondary">{item.sector}</Badge></TableCell>
-                    <TableCell>{item.incident_type}</TableCell>
-                    <TableCell>{item.attack_method}</TableCell>
-                    <TableCell>{item.root_cause}</TableCell>
+                    <TableCell>{new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</TableCell>
                     <TableCell>
                       <Badge variant={getSeverityBadge(item.severity)}>{item.severity}</Badge>
                     </TableCell>
@@ -261,7 +266,7 @@ export function IncidentsTable({
                 ))
               ) : (
                 <TableRow>
-                  <TableCell colSpan={8} className="text-center h-24">
+                  <TableCell colSpan={6} className="text-center h-24">
                     No results found.
                   </TableCell>
                 </TableRow>

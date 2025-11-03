@@ -16,16 +16,22 @@ export default function IncidentsTableClient({ data }: { data: Incident[] }) {
 
     const [hasMounted, setHasMounted] = useState(false);
 
-    const [keyword, setKeyword] = useState(() => searchParams.get('search') || '');
-    const [year, setYear] = useState(() => searchParams.get('year') || '');
-    const [sector, setSector] = useState(() => searchParams.get('sector') || '');
-    const [type, setType] = useState(() => searchParams.get('type') || '');
-    const [severity, setSeverity] = useState(() => searchParams.get('severity') || '');
+    const [keyword, setKeyword] = useState('');
+    const [year, setYear] = useState('');
+    const [sector, setSector] = useState('');
+    const [type, setType] = useState('');
+    const [severity, setSeverity] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
+        setKeyword(searchParams.get('search') || '');
+        setYear(searchParams.get('year') || '');
+        setSector(searchParams.get('sector') || '');
+        setType(searchParams.get('type') || '');
+        setSeverity(searchParams.get('severity') || '');
+        setCurrentPage(Number(searchParams.get('page')) || 1);
         setHasMounted(true);
-    }, []);
+    }, [searchParams]);
     
     const updateURLParams = (params: Record<string, string>) => {
         const currentParams = new URLSearchParams(searchParams.toString());
@@ -36,6 +42,13 @@ export default function IncidentsTableClient({ data }: { data: Incident[] }) {
             currentParams.delete(key);
           }
         });
+        // Add page to params
+        if (params.page) {
+            currentParams.set('page', params.page);
+        } else {
+            currentParams.delete('page');
+        }
+
         startTransition(() => {
             router.replace(`${pathname}?${currentParams.toString()}`);
         });
@@ -45,14 +58,19 @@ export default function IncidentsTableClient({ data }: { data: Incident[] }) {
         const newValue = value === 'all' ? '' : value;
         setter(newValue);
         setCurrentPage(1);
-        updateURLParams({ [paramName]: newValue });
+        updateURLParams({ [paramName]: newValue, page: '1' });
     };
       
     const handleKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setKeyword(e.target.value);
         setCurrentPage(1);
-        updateURLParams({ 'search': e.target.value });
+        updateURLParams({ 'search': e.target.value, page: '1' });
     };
+
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+        updateURLParams({ page: page.toString() });
+    }
 
     const filteredData = useMemo(() => {
         return data.filter((item) => {
@@ -90,7 +108,7 @@ export default function IncidentsTableClient({ data }: { data: Incident[] }) {
             currentPage={currentPage}
             handleKeywordChange={handleKeywordChange}
             handleFilterChange={handleFilterChange}
-            setCurrentPage={setCurrentPage}
+            setCurrentPage={handlePageChange}
             allIncidents={data}
         />
     );
