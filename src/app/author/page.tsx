@@ -40,7 +40,7 @@ export default function AuthorPage() {
                     </a>
                 </Button>
                 <Button variant="secondary" asChild>
-                     <a href="#" target="_blank" rel="noopener noreferrer">
+                     <a href="https://ayush11profile.netlify.app/" target="_blank" rel="noopener noreferrer">
                         <User className="mr-2 h-4 w-4" />
                         Portfolio
                     </a>
