@@ -23,12 +23,12 @@ import { Badge } from '@/components/ui/badge';
 import { exportToCsv, exportToJson } from '@/lib/utils';
 import Link from 'next/link';
 import { PaginationControls } from '@/components/pagination-controls';
-import { ArrowDown, ArrowUp, Download, Search, X } from 'lucide-react';
+import { FileJson, FileText, Search, Link as LinkIcon } from 'lucide-react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 const ITEMS_PER_PAGE = 10;
 
-type SortKey = 'date' | 'sector' | 'severity';
+type SortKey = 'title' | 'sector' | 'severity';
 type SortDirection = 'asc' | 'desc';
 
 export function IncidentsTable({ data }: { data: Incident[] }) {
@@ -43,8 +43,8 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
   const [type, setType] = useState(() => searchParams.get('type') || 'all');
   const [severity, setSeverity] = useState(() => searchParams.get('severity') || 'all');
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortKey, setSortKey] = useState<SortKey>('date');
-  const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
+  const [sortKey, setSortKey] = useState<SortKey>('title');
+  const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
 
   const uniqueSectors = useMemo(() => [...new Set(data.map((d) => d.sector))], [data]);
   const uniqueYears = useMemo(() => [...new Set(data.map((d) => new Date(d.date).getFullYear().toString()))].sort((a,b) => b.localeCompare(a)), [data]);
@@ -101,9 +101,6 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
         const severityOrder = { Critical: 4, High: 3, Medium: 2, Low: 1 };
         valA = severityOrder[a.severity];
         valB = severityOrder[b.severity];
-      } else if (sortKey === 'date') {
-        valA = new Date(a.date).getTime();
-        valB = new Date(b.date).getTime();
       } else {
         valA = a[sortKey];
         valB = b[sortKey];
@@ -132,23 +129,8 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
       setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
     } else {
       setSortKey(key);
-      setSortDirection('desc');
+      setSortDirection('asc');
     }
-  };
-
-  const clearFilters = () => {
-    setKeyword('');
-    setYear('all');
-    setSector('all');
-    setType('all');
-    setSeverity('all');
-    setCurrentPage(1);
-    updateURLParams({ search: '', year: '', sector: '', type: '', severity: '' });
-  };
-
-  const renderSortArrow = (key: SortKey) => {
-    if (sortKey !== key) return null;
-    return sortDirection === 'asc' ? <ArrowUp className="ml-2 h-4 w-4" /> : <ArrowDown className="ml-2 h-4 w-4" />;
   };
 
   const getSeverityBadge = (severity: Incident['severity']) => {
@@ -168,94 +150,89 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
-        <div className="lg:col-span-2 relative">
-           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-           <Input placeholder="Search..." value={keyword} onChange={handleKeywordChange} className="pl-10" />
+        <div className="flex flex-wrap items-center gap-2">
+            <div className="relative flex-grow min-w-[200px]">
+               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+               <Input placeholder="Search by keyword..." value={keyword} onChange={handleKeywordChange} className="pl-10" />
+            </div>
+            
+            <Select value={year} onValueChange={handleFilterChange(setYear, 'year')}>
+              <SelectTrigger className="flex-grow min-w-[120px]"><SelectValue placeholder="Year" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Years</SelectItem>
+                {uniqueYears.map((y) => (<SelectItem key={y} value={y}>{y}</SelectItem>))}
+              </SelectContent>
+            </Select>
+
+            <Select value={sector} onValueChange={handleFilterChange(setSector, 'sector')}>
+              <SelectTrigger className="flex-grow min-w-[120px]"><SelectValue placeholder="Sector" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Sectors</SelectItem>
+                {uniqueSectors.map((s) => (<SelectItem key={s} value={s}>{s}</SelectItem>))}
+              </SelectContent>
+            </Select>
+
+            <Select value={type} onValueChange={handleFilterChange(setType, 'type')}>
+              <SelectTrigger className="flex-grow min-w-[120px]"><SelectValue placeholder="Incident Type" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Types</SelectItem>
+                {uniqueTypes.map((t) => (<SelectItem key={t} value={t}>{t}</SelectItem>))}
+              </SelectContent>
+            </Select>
+
+            <Select value={severity} onValueChange={handleFilterChange(setSeverity, 'severity')}>
+              <SelectTrigger className="flex-grow min-w-[120px]"><SelectValue placeholder="Severity" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Severities</SelectItem>
+                {uniqueSeverities.map((s) => (<SelectItem key={s} value={s}>{s}</SelectItem>))}
+              </SelectContent>
+            </Select>
+            <Button variant="outline" size="sm" onClick={() => exportToJson('incidents', filteredData)}><FileJson className="mr-2 h-4 w-4"/>JSON</Button>
+            <Button variant="outline" size="sm" onClick={() => exportToCsv('incidents', filteredData)}><FileText className="mr-2 h-4 w-4"/>CSV</Button>
         </div>
-        
-        <Select value={year} onValueChange={handleFilterChange(setYear, 'year')}>
-          <SelectTrigger><SelectValue placeholder="Year" /></SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Years</SelectItem>
-            {uniqueYears.map((y) => (<SelectItem key={y} value={y}>{y}</SelectItem>))}
-          </SelectContent>
-        </Select>
-
-        <Select value={sector} onValueChange={handleFilterChange(setSector, 'sector')}>
-          <SelectTrigger><SelectValue placeholder="Sector" /></SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Sectors</SelectItem>
-            {uniqueSectors.map((s) => (<SelectItem key={s} value={s}>{s}</SelectItem>))}
-          </SelectContent>
-        </Select>
-
-        <Select value={type} onValueChange={handleFilterChange(setType, 'type')}>
-          <SelectTrigger><SelectValue placeholder="Type" /></SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Types</SelectItem>
-            {uniqueTypes.map((t) => (<SelectItem key={t} value={t}>{t}</SelectItem>))}
-          </SelectContent>
-        </Select>
-
-        <Select value={severity} onValueChange={handleFilterChange(setSeverity, 'severity')}>
-          <SelectTrigger><SelectValue placeholder="Severity" /></SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Severities</SelectItem>
-            {uniqueSeverities.map((s) => (<SelectItem key={s} value={s}>{s}</SelectItem>))}
-          </SelectContent>
-        </Select>
-      </div>
-      
-      <div className="flex items-center justify-between">
-        <p className="text-sm text-muted-foreground">
-          Showing {filteredData.length > 0 ? ((currentPage - 1) * ITEMS_PER_PAGE) + 1 : 0}-
-          {Math.min(currentPage * ITEMS_PER_PAGE, filteredData.length)} of {filteredData.length} incidents.
-        </p>
-        <div className="flex gap-2">
-            <Button variant="ghost" size="sm" onClick={clearFilters}><X className="mr-2 h-4 w-4"/>Clear Filters</Button>
-            <Button variant="outline" size="sm" onClick={() => exportToJson('incidents', filteredData)}><Download className="mr-2 h-4 w-4"/>JSON</Button>
-            <Button variant="outline" size="sm" onClick={() => exportToCsv('incidents', filteredData)}><Download className="mr-2 h-4 w-4"/>CSV</Button>
-        </div>
-      </div>
 
       <div className="rounded-lg border">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="cursor-pointer hover:bg-muted" onClick={() => handleSort('date')}>
-                <div className="flex items-center">Date {renderSortArrow('date')}</div>
-              </TableHead>
-              <TableHead>Title</TableHead>
-              <TableHead className="cursor-pointer hover:bg-muted" onClick={() => handleSort('sector')}>
-                <div className="flex items-center">Sector {renderSortArrow('sector')}</div>
-              </TableHead>
-              <TableHead>Type</TableHead>
-              <TableHead className="cursor-pointer hover:bg-muted" onClick={() => handleSort('severity')}>
-                <div className="flex items-center">Severity {renderSortArrow('severity')}</div>
-              </TableHead>
+              <TableHead onClick={() => handleSort('title')}>Incident</TableHead>
+              <TableHead>Organization</TableHead>
+              <TableHead onClick={() => handleSort('sector')}>Sector</TableHead>
+              <TableHead>Incident Type</TableHead>
+              <TableHead>Attack Method</TableHead>
+              <TableHead>Root Cause</TableHead>
+              <TableHead onClick={() => handleSort('severity')}>Severity</TableHead>
+              <TableHead>Source</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {paginatedData.length > 0 ? (
               paginatedData.map((item) => (
                 <TableRow key={item.id}>
-                  <TableCell>{new Date(item.date).toLocaleDateString()}</TableCell>
                   <TableCell>
                     <Link href={`/incidents/${item.id}`} className="font-medium text-primary hover:underline">
                       {item.title}
                     </Link>
                   </TableCell>
-                  <TableCell>{item.sector}</TableCell>
+                  <TableCell>{item.affected_entities[0]}</TableCell>
+                  <TableCell><Badge variant="secondary">{item.sector}</Badge></TableCell>
                   <TableCell>{item.incident_type}</TableCell>
+                  <TableCell>{item.attack_method}</TableCell>
+                  <TableCell>{item.root_cause}</TableCell>
                   <TableCell>
                     <Badge variant={getSeverityBadge(item.severity)}>{item.severity}</Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Link href={`/incidents/${item.id}`} className="flex items-center gap-1 text-sm hover:underline">
+                        <LinkIcon className="h-3 w-3" />
+                        Link
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={5} className="text-center h-24">
+                <TableCell colSpan={8} className="text-center h-24">
                   No results found.
                 </TableCell>
               </TableRow>
