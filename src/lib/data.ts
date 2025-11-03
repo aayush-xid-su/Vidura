@@ -587,5 +587,185 @@ export const incidents: Incident[] = [
     affected_entities: ['Cleartrip'],
     attack_method: 'Undisclosed',
     root_cause: 'Breach of internal systems',
+  },
+  {
+    id: 'inc-2025-001',
+    title: 'Tata Technologies Ransomware Attack',
+    date: '2025-01-31',
+    sector: 'Technology/Engineering',
+    incident_type: 'Ransomware',
+    severity: 'High',
+    summary: 'Several IT services were suspended due to a ransomware attack, with potential data exfiltration and operational disruption.',
+    description: 'Tata Technologies, a Tata Motors subsidiary, confirmed a ransomware attack that forced a temporary shutdown of IT systems to contain the threat, highlighting rising ransomware threats to India\'s industrial sector.',
+    sources: [
+      { title: 'Tata Technologies reports ransomware attack to Indian stock exchange', url: 'https://therecord.media/tata-ransomware-attack-report-incident' },
+      { title: 'Tata Technologies hit by ransomware attack', url: 'https://www.itpro.com/security/ransomware/tata-technologies-hit-by-ransomware-attack' },
+    ],
+    affected_entities: ['Tata Technologies'],
+    attack_method: 'Ransomware deployment targeting IT assets',
+    root_cause: 'Unspecified vulnerabilities in IT systems'
+  },
+  {
+    id: 'inc-2025-002',
+    title: 'Angel One Data Breach',
+    date: '2025-03-01',
+    sector: 'Finance',
+    incident_type: 'Data Breach',
+    severity: 'High',
+    summary: 'Client data was exposed, including personal information, due to an AWS cloud storage misconfiguration.',
+    description: 'Stockbroker Angel One disclosed an AWS security breach exposing client data, amid a 13% rise in average breach costs to INR 220 million, highlighting cloud security risks in finance.',
+    sources: [
+      { title: '20 Major Data Breaches of 2025', url: 'https://63sats.com/blog/20-major-data-breaches-of-2025/' },
+      { title: 'India Records Highest Average Cost of a Data Breach at INR 220 million in 2025: IBM Report', url: 'https://in.newsroom.ibm.com/2025-08-07-India-Records-Highest-Average-Cost-of-a-Data-Breach-IBM' },
+    ],
+    affected_entities: ['Angel One'],
+    attack_method: 'Unauthorized access to AWS cloud storage',
+    root_cause: 'Misconfiguration in Amazon Web Services account'
+  },
+  {
+    id: 'inc-2025-003',
+    title: 'Star Health Insurance Breach and Physical Threats',
+    date: '2025-03-15',
+    sector: 'Healthcare/Insurance',
+    incident_type: 'Data Breach',
+    severity: 'Critical',
+    summary: 'A massive data leak of 7.24TB affecting 31 million customers was followed by death threats and bullets mailed to executives.',
+    description: "Hacker 'xenZen' escalated a prior Star Health breach by leaking 7.24TB of customer data and sending death threats with bullet cartridges to executives, citing denied medical claims.",
+    sources: [
+      { title: 'Star Health Data Breach: Hacker Sends Bullets to Executives', url: 'https://timesofindia.indiatimes.com/technology/tech-news/star-health-data-breach-hacker-who-leaked-details-of-31-million-customers-sends-bullets-to-executives/articleshow/115239139.cms' },
+    ],
+    affected_entities: ['Star Health Insurance'],
+    attack_method: 'Data exfiltration, extortion, physical intimidation',
+    root_cause: 'Continued exploitation from 2024 breach; unspecified vulnerabilities'
+  },
+  {
+    id: 'inc-2025-004',
+    title: 'MedSave Health Insurance Data Breach',
+    date: '2025-04-01',
+    sector: 'Healthcare/Insurance',
+    incident_type: 'Data Breach',
+    severity: 'Critical',
+    summary: '561GB of sensitive data was stolen, including personal health information of 10.6 million individuals.',
+    description: "Threat actor 'Omid16B' exfiltrated 561GB of sensitive data from MedSave Health Insurance, exposing health records and corporate accounts, underscoring healthcare sector vulnerabilities.",
+    sources: [
+      { title: 'The State of Ransomware 2025', url: 'https://www.blackfog.com/the-state-of-ransomware-2025/' },
+    ],
+    affected_entities: ['MedSave Health Insurance'],
+    attack_method: 'Unauthorized database exfiltration',
+    root_cause: 'Vulnerabilities in database security'
+  },
+  {
+    id: 'inc-2025-006',
+    title: 'DDoS Attacks on Multiple Government Websites',
+    date: '2025-05-01',
+    sector: 'Government',
+    incident_type: 'DDoS',
+    severity: 'Critical',
+    summary: 'Over 1.5 million attack attempts were made, with 150 successful intrusions disrupting services after a terror attack.',
+    description: 'Post-Pahalgam terror attack, over 1.5 million cyberattacks from Pakistan, Bangladesh, Indonesia, and Middle East groups targeted government, banking, and healthcare sites, with 150 intrusions succeeding.',
+    sources: [
+      { title: 'Over 10 lakh cyber attacks on Indian systems after Pahalgam terror attack', url: 'https://www.newindianexpress.com/nation/2025/May/02/over-10-lakh-cyber-attacks-on-indian-systems-after-pahalgam-terror-attack-maharashtra-cyber' },
+    ],
+    affected_entities: ['Multiple Government Websites'],
+    attack_method: 'Distributed Denial of Service',
+    root_cause: 'Geopolitical tensions post-Pahalgam terror attack'
+  },
+  {
+    id: 'inc-2025-009',
+    title: 'Zoomcar Data Breach',
+    date: '2025-06-12',
+    sector: 'Transportation/E-commerce',
+    incident_type: 'Data Breach',
+    severity: 'High',
+    summary: '8.4 million user records were exposed, including personal and booking details.',
+    description: 'Car-sharing platform Zoomcar suffered a breach exposing 8.4 million user records, highlighting vulnerabilities in the shared mobility sector.',
+    sources: [
+      { title: 'Major Cyber Attacks, Ransomware Attacks and Data Breaches of June 2025', url: 'https://www.cm-alliance.com/cybersecurity-blog/major-cyber-attacks-ransomware-attacks-and-data-breaches-of-june-2025' },
+    ],
+    affected_entities: ['Zoomcar'],
+    attack_method: 'Unauthorized database access',
+    root_cause: 'Security misconfigurations'
+  },
+  {
+    id: 'inc-2025-010',
+    title: 'Indian State Load Dispatch Centres (SLDCs) Espionage',
+    date: '2025-06-16',
+    sector: 'Critical Infrastructure - Energy',
+    incident_type: 'Malware',
+    severity: 'Critical',
+    summary: 'At least 7 State Load Dispatch Centres were compromised, posing a risk for grid manipulation.',
+    description: "A China-linked espionage campaign targeted seven State Load Dispatch Centres, compromising SCADA systems and posing risks to India's power grid.",
+    sources: [
+      { title: 'Cyber Espionage Against Critical Infrastructure: A Case Study of Targeted Attacks on Indian State Load Dispatch Centres', url: 'https://ijsrem.com/download/cyber-espionage-against-critical-infrastructure-a-case-study-of-targeted-attacks-on-indian-state-load-dispatch-centres-sldcs/' },
+    ],
+    affected_entities: ['Indian State Load Dispatch Centres (SLDCs)'],
+    attack_method: 'SCADA system infiltration and espionage malware',
+    root_cause: 'Vulnerabilities in SCADA systems'
+  },
+  {
+    id: 'inc-2025-011',
+    title: 'Operation Bunyān al-Marsūs Cyber Campaign',
+    date: '2025-07-29',
+    sector: 'Critical Infrastructure/Energy/Transport',
+    incident_type: 'Malware',
+    severity: 'Critical',
+    summary: 'A Pakistan-linked APT campaign targeted India\'s energy and transport infrastructure with ICS malware.',
+    description: "Operation Bunyān al-Marsūs, a Pakistan-linked APT campaign, targeted India's energy and transport infrastructure with ICS malware, exploiting SCADA vulnerabilities.",
+    sources: [
+      { title: '20 Recent Cyber Attacks in India [2025]', url: 'https://eventussecurity.com/cybersecurity/india/cyber-attacks/' },
+    ],
+    affected_entities: ['Energy and Transport Infrastructure'],
+    attack_method: 'SCADA and OT network infiltration, ICS malware',
+    root_cause: 'Unpatched OT protocols, default credentials'
+  },
+  {
+    id: 'inc-2025-012',
+    title: 'ICICI Bank Ransomware Attack',
+    date: '2025-08-01',
+    sector: 'Finance',
+    incident_type: 'Ransomware',
+    severity: 'Critical',
+    summary: 'The Bashe ransomware group leaked customer data from March 2024 and demanded a ransom.',
+    description: 'Bashe ransomware group leaked ICICI Bank customer data from March 2024, demanding ransom amid rising AI-enhanced threats to BFSI.',
+    sources: [
+      { title: 'The State of Ransomware 2025', url: 'https://www.blackfog.com/the-state-of-ransomware-2025/' },
+      { title: 'India’s BFSI sector faces major cyber threats in 2025', url: 'https://www.cnbctv18.com/technology/india-bfsi-sector-major-cyber-threats-in-2025-ai-deepfakes-quantum-risks-and-more-19585933.htm' },
+    ],
+    affected_entities: ['ICICI Bank'],
+    attack_method: 'Data exfiltration and extortion',
+    root_cause: 'Compromised access credentials'
+  },
+  {
+    id: 'inc-2025-013',
+    title: 'Jaguar Land Rover (JLR) India Ransomware Attack',
+    date: '2025-08-28',
+    sector: 'Automotive',
+    incident_type: 'Ransomware',
+    severity: 'Critical',
+    summary: 'A ransomware attack halted production in India and globally until October 1, affecting suppliers.',
+    description: 'JLR, owned by Tata Motors, faced a ransomware attack that halted production in India, affecting suppliers and exposing OT vulnerabilities in manufacturing.',
+    sources: [
+      { title: 'JLR extends factory closure due to cyber attack', url: 'https://www.theguardian.com/business/2025/sep/20/jaguar-land-rover-hack-factories-cybersecurity-jlr' },
+    ],
+    affected_entities: ['Jaguar Land Rover (JLR) - India Operations'],
+    attack_method: 'Ransomware deployment disrupting production',
+    root_cause: 'Supply chain vulnerabilities'
+  },
+  {
+    id: 'inc-2025-015',
+    title: 'Parivesh Government Portal Data Breach',
+    date: '2025-09-01',
+    sector: 'Government - Environment',
+    incident_type: 'Data Breach',
+    severity: 'Critical',
+    summary: "1.2 million user records were leaked, including government officials' bank details.",
+    description: "The Parivesh portal for environmental clearances was breached by 'flirt,' exposing 1.2 million user records, amid a 59% expectation of breaches in 2025.",
+    sources: [
+      { title: 'Parivesh Data Breach Exposes 1.2 Million User Records', url: 'https://dailydarkweb.net/parivesh-data-breach-exposes-1-2-million-user-records/' },
+    ],
+    affected_entities: ['Parivesh Government Portal'],
+    attack_method: 'Unauthorized database access and leak',
+    root_cause: 'Insecure database configurations'
   }
 ];
+
