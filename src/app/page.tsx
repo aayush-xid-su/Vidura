@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 export default function Home() {
   return (
-    <div className="flex h-[calc(100vh-4rem)] flex-col items-center justify-center text-foreground p-4">
+    <div className="flex-1 flex flex-col items-center justify-center text-foreground p-4">
       <div className="max-w-4xl text-center">
         <h1 className="text-5xl md:text-7xl font-bold font-headline tracking-tighter text-primary">
           Vidura: Cybersecurity Incident Record
@@ -21,7 +21,7 @@ export default function Home() {
             <Link href="/incidents">Browse All Incidents</Link>
           </Button>
           <Button variant="outline" asChild className="bg-transparent border-white/20 hover:bg-white/10 hover:text-foreground">
-            <Link href="/about"><User className="mr-2 h-4 w-4" /> About The Project</Link>
+            <Link href="/author"><User className="mr-2 h-4 w-4" /> About The Project</Link>
           </Button>
         </div>
       </div>
