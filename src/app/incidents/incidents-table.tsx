@@ -271,10 +271,14 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
                     <Badge variant={getSeverityBadge(item.severity)}>{item.severity}</Badge>
                   </TableCell>
                   <TableCell>
-                    <Link href={`/incidents/${item.id}`} className="flex items-center gap-1 text-sm hover:underline">
-                        <LinkIcon className="h-3 w-3" />
-                        Link
-                    </Link>
+                    {item.sources.length > 0 ? (
+                        <a href={item.sources[0].url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm hover:underline">
+                            <LinkIcon className="h-3 w-3" />
+                            Link
+                        </a>
+                    ) : (
+                        <span className="text-sm text-muted-foreground">N/A</span>
+                    )}
                   </TableCell>
                 </TableRow>
               ))
