@@ -21,7 +21,7 @@ export default function Home() {
             <Link href="/incidents">Browse All Incidents</Link>
           </Button>
           <Button variant="outline" asChild className="bg-transparent border-white/20 hover:bg-white/10 hover:text-foreground">
-            <Link href="#"><User className="mr-2 h-4 w-4" /> About Author</Link>
+            <Link href="/about"><User className="mr-2 h-4 w-4" /> About The Project</Link>
           </Button>
         </div>
       </div>
