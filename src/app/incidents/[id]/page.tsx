@@ -84,12 +84,8 @@ export default function IncidentDetailPage({ params }: { params: { id: string } 
                     <CardHeader><CardTitle className="flex items-center"><AlertTriangle className="mr-2 text-destructive"/>Impact</CardTitle></CardHeader>
                     <CardContent className="space-y-4">
                         <div>
-                            <h4 className="font-semibold">Organizational Impact</h4>
-                            <p className="text-muted-foreground text-sm">Widespread power outage affecting 2 million people for 12 hours.</p>
-                        </div>
-                        <div>
-                            <h4 className="font-semibold">Financial Impact</h4>
-                            <p className="text-muted-foreground text-sm">Estimated economic loss of over $100 million.</p>
+                            <h4 className="font-semibold">Summary</h4>
+                            <p className="text-muted-foreground text-sm">{incident.summary}</p>
                         </div>
                     </CardContent>
                 </Card>
@@ -100,7 +96,7 @@ export default function IncidentDetailPage({ params }: { params: { id: string } 
                     <CardContent>
                          <div>
                             <p className="font-semibold text-base">Verified</p>
-                            <p className="text-sm text-muted-foreground">Verified by CERT-In and international cybersecurity agencies.</p>
+                            <p className="text-sm text-muted-foreground">This incident has been verified against multiple public sources.</p>
                          </div>
                     </CardContent>
                 </Card>
