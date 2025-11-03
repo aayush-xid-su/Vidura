@@ -79,6 +79,8 @@ export default function IncidentDetailPage({ params }: { params: { id: string } 
                     <CardContent><p className="text-base text-muted-foreground">{incident.description}</p></CardContent>
                 </Card>
 
+                <IncidentDetailClient incident={incident} allIncidents={allIncidents} />
+                
                  {/* Verification Status */}
                 <Card>
                     <CardHeader><CardTitle className="flex items-center gap-2 text-2xl font-headline"><CheckCircle2 className="text-green-500"/>Verification Status</CardTitle></CardHeader>
@@ -89,7 +91,6 @@ export default function IncidentDetailPage({ params }: { params: { id: string } 
                          </div>
                     </CardContent>
                 </Card>
-                <IncidentDetailClient incident={incident} allIncidents={allIncidents} />
             </div>
 
             <div className="space-y-8">
