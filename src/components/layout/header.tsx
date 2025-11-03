@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ViduraLogo } from '@/components/icons';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Sun, Moon, Info, FileText, Scale } from 'lucide-react';
+import { Sun, Moon, Info, FileText, Scale, Menu } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -22,6 +22,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { useTheme } from 'next-themes';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { useState } from 'react';
 
 
 const navItems = [
@@ -35,6 +37,7 @@ const navItems = [
 export function Header() {
   const pathname = usePathname();
   const { setTheme } = useTheme();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -43,7 +46,7 @@ export function Header() {
           <ViduraLogo className="h-6 w-6 text-primary" />
           <span className="font-bold inline-block">Vidura</span>
         </Link>
-        <nav className="flex items-center gap-6 text-sm flex-1">
+        <nav className="hidden md:flex items-center gap-6 text-sm flex-1">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -60,13 +63,13 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <Dialog>
+        <div className="flex flex-1 items-center justify-end md:flex-none gap-2">
+           <Dialog>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <DialogTrigger asChild>
-                    <Button variant="ghost" size="icon">
+                    <Button variant="ghost" size="icon" className="hidden md:inline-flex">
                       <Info className="h-5 w-5" />
                       <span className="sr-only">About</span>
                     </Button>
@@ -187,7 +190,7 @@ export function Header() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <DialogTrigger asChild>
-                    <Button variant="ghost" size="icon">
+                    <Button variant="ghost" size="icon" className="hidden md:inline-flex">
                       <FileText className="h-5 w-5" />
                       <span className="sr-only">Terms & Conditions</span>
                     </Button>
@@ -266,7 +269,7 @@ export function Header() {
                     Vidura reserves the right to update or modify these Terms and Conditions at any time without prior notice. Continued use of the Website constitutes acceptance of the updated terms.
                   </p>
 
-                  <h3 className="text-xl font-headline font-semibold mt-6 mb-2">10. Governing Law</h3>
+                  <h3 className="text-xl fontheadline font-semibold mt-6 mb-2">10. Governing Law</h3>
                     <p>
                         These Terms and Conditions shall be governed by and construed in accordance with the laws of India. Any disputes shall fall under the jurisdiction of the courts of Nuapada, odisha,India.
                     </p>
@@ -308,10 +311,38 @@ export function Header() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Open Menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left">
+              <Link href="/" className="mr-6 flex items-center space-x-2 mb-6">
+                <ViduraLogo className="h-6 w-6 text-primary" />
+                <span className="font-bold">Vidura</span>
+              </Link>
+              <nav className="flex flex-col gap-4 text-lg">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      'transition-colors hover:text-foreground/80',
+                      pathname === item.href ? 'text-primary font-semibold' : 'text-foreground/60'
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
   );
 }
-
-    

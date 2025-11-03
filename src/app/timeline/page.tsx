@@ -1,3 +1,4 @@
+
 import { incidents } from '@/lib/data';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
@@ -65,13 +66,13 @@ export default function TimelinePage() {
         </p>
       </div>
 
-      <div className="relative max-w-3xl mx-auto">
-        <div className="absolute left-9 md:left-1/2 -translate-x-1/2 h-full w-0.5 bg-border" aria-hidden="true"></div>
+      <div className="relative max-w-5xl mx-auto">
+        <div className="absolute left-4 md:left-1/2 -translate-x-1/2 h-full w-0.5 bg-border" aria-hidden="true"></div>
         
         {years.map(year => (
             <div key={year} className="relative mb-12">
-                <div className="absolute left-9 md:left-1/2 -translate-x-1/2 -top-2 z-10">
-                     <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl font-headline">
+                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 -top-2 z-10">
+                     <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl font-headline shadow-lg">
                         {year}
                      </div>
                 </div>
@@ -82,10 +83,10 @@ export default function TimelinePage() {
                          incidentCounter++;
                          const content = (
                             <Link href={`/incidents/${incident.id}`} className="block">
-                                <Card className="hover:border-primary/50 hover:shadow-lg transition-all">
+                                <Card className="hover:border-primary/50 hover:shadow-lg transition-all duration-300">
                                     <CardContent className="p-4">
-                                        <div className="flex justify-between items-start mb-2">
-                                            <h3 className="font-bold text-lg font-headline text-card-foreground">{incident.title}</h3>
+                                        <div className="flex justify-between items-start mb-2 gap-2">
+                                            <h3 className="font-bold text-base md:text-lg font-headline text-card-foreground">{incident.title}</h3>
                                             <Badge variant="outline" className="text-xs whitespace-nowrap">{new Date(incident.date).toLocaleDateString('en-US', { day: '2-digit', month: 'short' })}</Badge>
                                         </div>
                                         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground mb-3">
@@ -103,20 +104,16 @@ export default function TimelinePage() {
                          );
                          return (
                              <div key={incident.id} className="relative flex items-start gap-4 md:gap-8">
-                                <div className="absolute top-5 left-9 md:left-1/2 -translate-x-1/2 z-10">
+                                <div className="absolute top-5 left-4 md:left-1/2 -translate-x-1/2 z-10">
                                      <div className="h-3 w-3 rounded-full bg-primary border-2 border-background"></div>
                                  </div>
-                                {isOdd ? (
-                                    <>
-                                        <div className="hidden md:flex w-full md:w-1/2 justify-end md:pr-8">{content}</div>
-                                        <div className="w-full md:w-1/2 md:pl-8"></div>
-                                    </>
-                                ) : (
-                                    <>
-                                        <div className="w-full md:w-1/2"></div>
-                                        <div className="w-full md:w-1/2 md:pl-8">{content}</div>
-                                    </>
-                                )}
+                                 <div className="md:hidden w-full ml-8">{content}</div>
+                                 <div className={`hidden md:flex w-1/2 ${isOdd ? 'justify-end pr-8' : 'pl-8'}`}>
+                                    {isOdd ? content : null}
+                                 </div>
+                                 <div className={`hidden md:flex w-1/2 ${!isOdd ? 'pl-8' : 'pr-8'}`}>
+                                    {!isOdd ? content : null}
+                                 </div>
                              </div>
                          );
                      })}

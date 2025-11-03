@@ -1,3 +1,4 @@
+
 import { incidents } from '@/lib/data';
 import { IncidentsTable } from './incidents-table';
 import { Suspense } from 'react';
@@ -26,7 +27,7 @@ function PageContent() {
 
 export default function IncidentsPage() {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className="container mx-auto py-6 px-4 md:px-6 text-center">Loading...</div>}>
             <PageContent />
         </Suspense>
     );

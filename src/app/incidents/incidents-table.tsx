@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo, useTransition } from 'react';
@@ -152,19 +153,19 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
   return (
     <div className="space-y-4">
       <div className="p-4 border rounded-lg bg-card">
-        <div className="flex flex-col md:flex-row items-center gap-2">
-          <div className="relative flex-grow w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-2">
+          <div className="relative md:col-span-2 lg:col-span-2">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search by keyword..."
               value={keyword}
               onChange={handleKeywordChange}
-              className="pl-10 bg-background"
+              className="pl-10 bg-background w-full"
             />
           </div>
 
           <Select value={year} onValueChange={handleFilterChange(setYear, 'year')}>
-            <SelectTrigger className="w-full md:w-[120px]">
+            <SelectTrigger className="w-full">
               <SelectValue placeholder="Year" />
             </SelectTrigger>
             <SelectContent>
@@ -178,7 +179,7 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
           </Select>
 
           <Select value={sector} onValueChange={handleFilterChange(setSector, 'sector')}>
-            <SelectTrigger className="w-full md:w-[180px]">
+            <SelectTrigger className="w-full">
               <SelectValue placeholder="Sector" />
             </SelectTrigger>
             <SelectContent>
@@ -192,7 +193,7 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
           </Select>
 
           <Select value={type} onValueChange={handleFilterChange(setType, 'type')}>
-            <SelectTrigger className="w-full md:w-[180px]">
+            <SelectTrigger className="w-full">
               <SelectValue placeholder="Incident Type" />
             </SelectTrigger>
             <SelectContent>
@@ -206,7 +207,7 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
           </Select>
 
           <Select value={severity} onValueChange={handleFilterChange(setSeverity, 'severity')}>
-            <SelectTrigger className="w-full md:w-[120px]">
+            <SelectTrigger className="w-full">
               <SelectValue placeholder="Severity" />
             </SelectTrigger>
             <SelectContent>
@@ -218,7 +219,9 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
               ))}
             </SelectContent>
           </Select>
-          <div className="flex items-center gap-2">
+          
+        </div>
+        <div className="flex items-center gap-2 mt-2 justify-end">
             <Button
               variant="outline"
               size="sm"
@@ -236,61 +239,62 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
               CSV
             </Button>
           </div>
-        </div>
       </div>
 
       <div className="rounded-lg border">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead onClick={() => handleSort('title')}>Incident</TableHead>
-              <TableHead>Organization</TableHead>
-              <TableHead onClick={() => handleSort('sector')}>Sector</TableHead>
-              <TableHead>Incident Type</TableHead>
-              <TableHead>Attack Method</TableHead>
-              <TableHead>Root Cause</TableHead>
-              <TableHead onClick={() => handleSort('severity')}>Severity</TableHead>
-              <TableHead>Source</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {paginatedData.length > 0 ? (
-              paginatedData.map((item) => (
-                <TableRow key={item.id}>
-                  <TableCell>
-                    <Link href={`/incidents/${item.id}`} className="font-medium text-primary hover:underline">
-                      {item.title}
-                    </Link>
-                  </TableCell>
-                  <TableCell>{item.affected_entities[0]}</TableCell>
-                  <TableCell><Badge variant="secondary">{item.sector}</Badge></TableCell>
-                  <TableCell>{item.incident_type}</TableCell>
-                  <TableCell>{item.attack_method}</TableCell>
-                  <TableCell>{item.root_cause}</TableCell>
-                  <TableCell>
-                    <Badge variant={getSeverityBadge(item.severity)}>{item.severity}</Badge>
-                  </TableCell>
-                  <TableCell>
-                    {item.sources.length > 0 ? (
-                        <a href={item.sources[0].url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm hover:underline">
-                            <LinkIcon className="h-3 w-3" />
-                            Link
-                        </a>
-                    ) : (
-                        <span className="text-sm text-muted-foreground">N/A</span>
-                    )}
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead onClick={() => handleSort('title')}>Incident</TableHead>
+                <TableHead>Organization</TableHead>
+                <TableHead onClick={() => handleSort('sector')}>Sector</TableHead>
+                <TableHead>Incident Type</TableHead>
+                <TableHead>Attack Method</TableHead>
+                <TableHead>Root Cause</TableHead>
+                <TableHead onClick={() => handleSort('severity')}>Severity</TableHead>
+                <TableHead>Source</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {paginatedData.length > 0 ? (
+                paginatedData.map((item) => (
+                  <TableRow key={item.id}>
+                    <TableCell>
+                      <Link href={`/incidents/${item.id}`} className="font-medium text-primary hover:underline">
+                        {item.title}
+                      </Link>
+                    </TableCell>
+                    <TableCell>{item.affected_entities[0]}</TableCell>
+                    <TableCell><Badge variant="secondary">{item.sector}</Badge></TableCell>
+                    <TableCell>{item.incident_type}</TableCell>
+                    <TableCell>{item.attack_method}</TableCell>
+                    <TableCell>{item.root_cause}</TableCell>
+                    <TableCell>
+                      <Badge variant={getSeverityBadge(item.severity)}>{item.severity}</Badge>
+                    </TableCell>
+                    <TableCell>
+                      {item.sources.length > 0 ? (
+                          <a href={item.sources[0].url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm hover:underline">
+                              <LinkIcon className="h-3 w-3" />
+                              Link
+                          </a>
+                      ) : (
+                          <span className="text-sm text-muted-foreground">N/A</span>
+                      )}
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={8} className="text-center h-24">
+                    No results found.
                   </TableCell>
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={8} className="text-center h-24">
-                  No results found.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+              )}
+            </TableBody>
+          </Table>
+        </div>
       </div>
 
       <PaginationControls

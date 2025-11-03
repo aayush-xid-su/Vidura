@@ -1,3 +1,4 @@
+
 import { Metadata } from 'next';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -11,11 +12,11 @@ export const metadata: Metadata = {
 export default function AuthorPage() {
   return (
     <div className="flex-1 flex flex-col items-center justify-center p-4">
-      <div className="absolute top-24 left-8 md:left-24 text-left">
+      <div className="w-full max-w-4xl px-4 text-center md:text-left absolute top-24 md:top-32 left-1/2 -translate-x-1/2 md:left-24 md:-translate-x-0">
         <h1 className="text-3xl md:text-4xl font-headline font-bold text-primary">About the Author</h1>
         <p className="text-base text-muted-foreground">A little bit about the creator of this application.</p>
       </div>
-      <div className="w-full max-w-2xl">
+      <div className="w-full max-w-2xl mt-32 md:mt-0">
         <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-xl shadow-lg p-8 text-center flex flex-col items-center">
             <Avatar className="w-24 h-24 mb-4 border-4 border-primary/20">
                 <AvatarImage src="/aayush.jpeg" alt="Ayush Das" />

@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -44,7 +45,7 @@ export default function Home() {
         <Button type="submit" size="lg" className="h-12">Search</Button>
       </form>
 
-      <div className="mt-6 flex gap-4">
+      <div className="mt-6 flex flex-col sm:flex-row gap-4">
         <Button asChild size="lg">
           <Link href="/incidents">
             <FileText className="mr-2 h-5 w-5" />
