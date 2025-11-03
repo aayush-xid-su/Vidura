@@ -41,7 +41,7 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
   const [year, setYear] = useState(() => searchParams.get('year') || 'all');
   const [sector, setSector] = useState(() => searchParams.get('sector') || 'all');
   const [type, setType] = useState(() => searchParams.get('type') || 'all');
-  const [severity, setSeverity] = useState(() => searchParams.get('severity') || 'all');
+  const [severity, setSeverity] = useState(() => search_params.get('severity') || 'all');
   const [currentPage, setCurrentPage] = useState(1);
   const [sortKey, setSortKey] = useState<SortKey>('title');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
@@ -150,50 +150,93 @@ export function IncidentsTable({ data }: { data: Incident[] }) {
 
   return (
     <div className="space-y-4">
-        <div className="p-4 border rounded-lg bg-card">
-            <div className="flex flex-col md:flex-row items-center gap-2">
-                <div className="relative flex-grow w-full">
-                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                   <Input placeholder="Search by keyword..." value={keyword} onChange={handleKeywordChange} className="pl-10 bg-background" />
-                </div>
-                
-                <Select value={year} onValueChange={handleFilterChange(setYear, 'year')}>
-                  <SelectTrigger className="w-full md:w-[120px]"><SelectValue placeholder="Year" /></SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Years</SelectItem>
-                    {uniqueYears.map((y) => (<SelectItem key={y} value={y}>{y}</SelectItem>))}
-                  </SelectContent>
-                </Select>
-    
-                <Select value={sector} onValueChange={handleFilterChange(setSector, 'sector')}>
-                  <SelectTrigger className="w-full md:w-[180px]"><SelectValue placeholder="Sector" /></SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Sectors</SelectItem>
-                    {uniqueSectors.map((s) => (<SelectItem key={s} value={s}>{s}</SelectItem>))}
-                  </SelectContent>
-                </Select>
-    
-                <Select value={type} onValueChange={handleFilterChange(setType, 'type')}>
-                  <SelectTrigger className="w-full md:w-[180px]"><SelectValue placeholder="Incident Type" /></SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Types</SelectItem>
-                    {uniqueTypes.map((t) => (<SelectItem key={t} value={t}>{t}</SelectItem>))}
-                  </SelectContent>
-                </Select>
-    
-                <Select value={severity} onValueChange={handleFilterChange(setSeverity, 'severity')}>
-                  <SelectTrigger className="w-full md:w-[120px]"><SelectValue placeholder="Severity" /></SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Severities</SelectItem>
-                    {uniqueSeverities.map((s) => (<SelectItem key={s} value={s}>{s}</SelectItem>))}
-                  </SelectContent>
-                </Select>
-                <div className="flex items-center gap-2">
-                    <Button variant="outline" size="sm" onClick={() => exportToJson('incidents', filteredData)}><FileJson className="mr-2 h-4 w-4"/>JSON</Button>
-                    <Button variant="outline" size="sm" onClick={() => exportToCsv('incidents', filteredData)}><FileText className="mr-2 h-4 w-4"/>CSV</Button>
-                </div>
-            </div>
+      <div className="p-4 border rounded-lg bg-card">
+        <div className="flex flex-col md:flex-row items-center gap-2">
+          <div className="relative flex-grow w-full">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Search by keyword..."
+              value={keyword}
+              onChange={handleKeywordChange}
+              className="pl-10 bg-background"
+            />
+          </div>
+
+          <Select value={year} onValueChange={handleFilterChange(setYear, 'year')}>
+            <SelectTrigger className="w-full md:w-[120px]">
+              <SelectValue placeholder="Year" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Years</SelectItem>
+              {uniqueYears.map((y) => (
+                <SelectItem key={y} value={y}>
+                  {y}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          <Select value={sector} onValueChange={handleFilterChange(setSector, 'sector')}>
+            <SelectTrigger className="w-full md:w-[180px]">
+              <SelectValue placeholder="Sector" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Sectors</SelectItem>
+              {uniqueSectors.map((s) => (
+                <SelectItem key={s} value={s}>
+                  {s}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          <Select value={type} onValueChange={handleFilterChange(setType, 'type')}>
+            <SelectTrigger className="w-full md:w-[180px]">
+              <SelectValue placeholder="Incident Type" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Types</SelectItem>
+              {uniqueTypes.map((t) => (
+                <SelectItem key={t} value={t}>
+                  {t}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          <Select value={severity} onValueChange={handleFilterChange(setSeverity, 'severity')}>
+            <SelectTrigger className="w-full md:w-[120px]">
+              <SelectValue placeholder="Severity" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Severities</SelectItem>
+              {uniqueSeverities.map((s) => (
+                <SelectItem key={s} value={s}>
+                  {s}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => exportToJson('incidents', filteredData)}
+            >
+              <FileJson className="mr-2 h-4 w-4" />
+              JSON
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => exportToCsv('incidents', filteredData)}
+            >
+              <FileText className="mr-2 h-4 w-4" />
+              CSV
+            </Button>
+          </div>
         </div>
+      </div>
 
       <div className="rounded-lg border">
         <Table>
