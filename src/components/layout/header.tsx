@@ -17,9 +17,11 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 
 
 const navItems = [
+  { href: '/', label: 'Home' },
   { href: '/incidents', label: 'Browse Incidents' },
   { href: '/timeline', label: 'Timeline' },
   { href: '/sources', label: 'Sources' },
+  { href: '/author', label: 'Author' },
 ];
 
 export function Header() {
@@ -40,8 +42,8 @@ export function Header() {
               href={item.href}
               className={cn(
                 'transition-colors hover:text-foreground/80',
-                pathname === item.href
-                  ? 'text-foreground font-semibold'
+                (pathname === item.href || (pathname === '/' && item.href === '/'))
+                  ? 'text-primary font-semibold'
                   : 'text-foreground/60'
               )}
             >
