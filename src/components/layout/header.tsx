@@ -24,6 +24,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { useState, useEffect } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Separator } from '@/components/ui/separator';
 
 
 const navItems = [
@@ -364,6 +365,17 @@ export function Header() {
                     {item.label}
                   </Link>
                 ))}
+                 <Separator className="my-2" />
+                  <DialogTrigger asChild>
+                    <button className="text-lg text-foreground/60 transition-colors hover:text-primary text-left flex items-center gap-2">
+                        <Info className="h-5 w-5" /> About
+                    </button>
+                  </DialogTrigger>
+                  <DialogTrigger asChild>
+                     <button className="text-lg text-foreground/60 transition-colors hover:text-primary text-left flex items-center gap-2">
+                        <FileText className="h-5 w-5" /> T&C
+                    </button>
+                  </DialogTrigger>
               </nav>
             </SheetContent>
           </Sheet>
