@@ -135,7 +135,7 @@ export const incidents: Incident[] = [
       "The Nuclear Power Corporation of India Ltd (NPCIL) initially denied the breach but later confirmed that a malware, identified as 'Dtrack', had infected a computer in its administrative network. The infected machine was not connected to the critical internal network that controls the power plant. The incident highlighted the vulnerability of critical infrastructure to cyber attacks.",
     sources: [
       {
-        url: 'https://www.reuters.com/article/us-india-nuclearpower-cyber/india-confirms-malware-attack-on-nuclear-power-plant-idUSKBN1X9285',
+        url: 'https://www.reuters.com/article/us-india-nuclearpower-cyber/india-confirms-malware-attack-on-nuclear-power-plant-idUSKBN1X9285/',
         title: 'Reuters: India confirms malware attack on nuclear power plant',
       },
     ],
