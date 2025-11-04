@@ -6,4 +6,3 @@ const config = {
 };
 
 export default config;
-// copyright aayush_xid_su 

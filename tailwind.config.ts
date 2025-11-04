@@ -103,5 +103,3 @@ export default {
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
-
-// copyright aayush_xid_su 
