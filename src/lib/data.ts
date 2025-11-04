@@ -273,11 +273,11 @@ export const incidents: Incident[] = [
     sources: [
       {
         title: 'The \'I Love You\' worm, 2000 coverage (The Guardian)',
-        url: 'https://example.com/source-unavailable',
+        url: 'https://www.theguardian.com/technology/2000/may/05/internetnews.guardianhayfestival2000',
       },
       {
         title: 'Rediff: The Indian who fought \'I Love You\' (May 2000)',
-        url: 'https://example.com/source-unavailable',
+        url: 'https://www.rediff.com/netguide/2000/may/11love.htm',
       },
     ],
     affected_entities: ['Various Indian Businesses', 'Government of India'],
@@ -296,7 +296,7 @@ export const incidents: Incident[] = [
     sources: [
       {
         title: 'India Today (June 2001 retrospective mentioning Zee defacement in 2000)',
-        url: 'https://example.com/source-unavailable',
+        url: 'https://www.indiatoday.in/magazine/science-and-technology/story/20010618-it-under-siege-as-net-terrorism-becomes-order-of-the-day-773887-2001-06-18',
       },
     ],
     affected_entities: ['Zee TV'],
@@ -313,7 +313,7 @@ export const incidents: Incident[] = [
     summary: 'The official website of the Indian Railways was defaced by hackers, disrupting information services for passengers.',
     description: 'Hackers targeted and defaced the Indian Railways website, replacing its content. While booking systems were reportedly unaffected, the incident caused confusion and demonstrated the vulnerability of government web infrastructure.',
     sources: [
-      { title: 'Hackers hit Indian Railways website', url: 'https://example.com/source-unavailable' },
+      { title: 'Hackers hit Indian Railways website', url: 'https://timesofindia.indiatimes.com/tech/news/hackers-hit-indian-railways-website/articleshow/32733979.cms' },
     ],
     affected_entities: ['Indian Railways'],
     attack_method: 'Website defacement',
@@ -329,8 +329,8 @@ export const incidents: Incident[] = [
     summary: 'The website of India\'s Ministry of External Affairs (MEA) was hacked and defaced by a group claiming to be from Pakistan.',
     description: 'A Pakistani hacker group called G-Force claimed responsibility for defacing the MEA website. This was a high-profile incident in the ongoing cyber conflict between Indian and Pakistani hacktivist groups.',
     sources: [
-      { title: 'India\'s foreign ministry web site hacked', url: 'https://example.com/source-unavailable' },
-      { title: 'Pakistani group G-Force hacked MEA site', url: 'https://example.com/source-unavailable' },
+      { title: 'India\'s foreign ministry web site hacked', url: 'https://www.theguardian.com/technology/2002/feb/11/internetnews.india' },
+      { title: 'Pakistani group G-Force hacked MEA site', url: 'https://timesofindia.indiatimes.com/city/mumbai/police-slap-sedition-charge-on-hackers/articleshow/1344406203.cms' },
     ],
     affected_entities: ['Ministry of External Affairs'],
     attack_method: 'Website defacement',
@@ -345,7 +345,7 @@ export const incidents: Incident[] = [
     severity: 'High',
     summary: 'The Code Red worm infected numerous servers in India running Microsoft\'s IIS web server, causing defacements and contributing to a global DDoS attack.',
     description: 'The Code Red worm exploited a vulnerability in Microsoft IIS. Infected servers would deface websites with the message "Hacked by Chinese!" and launch a DDoS attack against the White House website. Many Indian government and business servers were affected.',
-    sources: [{ title: 'The Spread of the Code-Red Worm (CAIDA)', url: 'https://example.com/source-unavailable' }],
+    sources: [{ title: 'The Spread of the Code-Red Worm (CAIDA)', url: 'https://www.caida.org/publications/papers/2002/codered/' }],
     affected_entities: ['Various Indian Businesses', 'Government of India'],
     attack_method: 'Network worm',
     root_cause: 'Vulnerability in Microsoft IIS',
@@ -360,8 +360,8 @@ export const incidents: Incident[] = [
     summary: 'The complex Nimda worm spread rapidly across India, using multiple infection vectors including email, network shares, and web servers.',
     description: 'Just a week after the 9/11 attacks, the Nimda (admin spelled backwards) worm created widespread disruption. It used five different methods to propagate, causing significant slowdowns of internet traffic and compromising servers across India and the world.',
     sources: [
-      { title: 'The Nimda Worm: An Overview (SANS Institute)', url: 'https://example.com/source-unavailable' },
-      { title: 'Safe mail and worm attack — The Nimda worm', url: 'https://example.com/source-unavailable' },
+      { title: 'The Nimda Worm: An Overview (SANS Institute)', url: 'https://www.sans.org/white-papers/195/' },
+      { title: 'Safe mail and worm attack — The Nimda worm', url: 'https://www.zdnet.com/article/safe-mail-and-worm-attack-the-nimda-worm/' },
     ],
     affected_entities: ['Various'],
     attack_method: 'Multi-vector worm',
@@ -377,8 +377,8 @@ export const incidents: Incident[] = [
     summary: 'The Bugbear worm infected computers in India, stealing sensitive data like banking credentials and logging keystrokes.',
     description: 'Bugbear was a sophisticated worm that could bypass personal firewalls and antivirus software. It would terminate security software processes and log keystrokes, aiming to capture financial information. Many Indian users and businesses were affected.',
     sources: [
-      { title: 'Bugbear Worm Spreads Rapidly (BBC News, Oct 2002)', url: 'https://example.com/source-unavailable' },
-      { title: 'Bugbear Worm Analysis (Symantec)', url: 'https://example.com/source-unavailable' },
+      { title: 'Bugbear Worm Spreads Rapidly (BBC News, Oct 2002)', url: 'http://news.bbc.co.uk/2/hi/technology/2292771.stm' },
+      { title: 'Bugbear Worm Analysis (Symantec)', url: 'https://www.broadcom.com/support/security-response/w32.bugbear.b-mm' },
     ],
     affected_entities: ['Indian banking customers'],
     attack_method: 'Email worm with keylogger',
@@ -393,7 +393,7 @@ export const incidents: Incident[] = [
     severity: 'High',
     summary: 'The SQL Slammer worm caused a massive internet slowdown in India and globally by overwhelming networks with traffic from infected Microsoft SQL servers.',
     description: 'Slammer was a tiny worm that spread incredibly fast, infecting most of its victims within 10 minutes. It didn\'t write itself to disk, but resided in memory. It generated enormous amounts of network traffic, effectively causing a denial of service for many networks in India.',
-    sources: [{ title: 'SQL Slammer (Wikipedia)', url: 'https://example.com/source-unavailable' }],
+    sources: [{ title: 'SQL Slammer (Wikipedia)', url: 'https://en.wikipedia.org/wiki/SQL_Slammer_worm' }],
     affected_entities: ['ISPs', 'Businesses using MS SQL Server'],
     attack_method: 'Network worm',
     root_cause: 'Vulnerability in Microsoft SQL Server',
@@ -407,7 +407,7 @@ export const incidents: Incident[] = [
     severity: 'High',
     summary: 'The Blaster worm spread through Indian networks, causing Windows XP and 2000 machines to crash and reboot repeatedly.',
     description: 'Blaster exploited a vulnerability in the DCOM RPC service on Windows. Infected machines would display a shutdown message and launch a DDoS attack against windowsupdate.com. It caused significant productivity losses across India.',
-    sources: [{ title: 'Blaster (computer worm) (Wikipedia)', url: 'https://example.com/source-unavailable' }],
+    sources: [{ title: 'Blaster (computer worm) (Wikipedia)', url: 'https://en.wikipedia.org/wiki/Blaster_(computer_worm)' }],
     affected_entities: ['Windows PC users'],
     attack_method: 'Network worm',
     root_cause: 'DCOM RPC vulnerability in Windows',
@@ -422,8 +422,8 @@ export const incidents: Incident[] = [
     summary: 'The Sobig.F worm became the dominant malware threat in India, generating massive volumes of spam and clogging email servers.',
     description: 'Sobig.F spread as an email attachment. When activated, it would search for email addresses on the local machine and send itself to them. It also had a payload to download other malware. Its sheer volume brought many email systems to a crawl.',
     sources: [
-      { title: 'Sobig (Wikipedia)', url: 'https://example.com/source-unavailable' },
-      { title: 'When worms strike (Times of India, Sep 2003)', url: 'https://example.com/source-unavailable' },
+      { title: 'Sobig (Wikipedia)', url: 'https://en.wikipedia.org/wiki/Sobig' },
+      { title: 'When worms strike (Times of India, Sep 2003)', url: 'https://timesofindia.indiatimes.com/india/when-worms-strike/articleshow/183204.cms' },
     ],
     affected_entities: ['Email users', 'Businesses'],
     attack_method: 'Email worm',
@@ -439,7 +439,7 @@ export const incidents: Incident[] = [
     summary: 'In a landmark case, Suhas Katti was convicted for online harassment, marking the first conviction under India\'s Information Technology Act, 2000.',
     description: 'Suhas Katti was found guilty of posting obscene and defamatory messages about a woman on a Yahoo message group. The case was notable for the speed of the conviction and for being the first case to result in a conviction under the new IT Act, setting a precedent for cybercrime prosecution in India.',
     sources: [
-      { title: 'Suhas Katti v. Tamil Nadu (Wikipedia)', url: 'https://example.com/source-unavailable' },
+      { title: 'Suhas Katti v. Tamil Nadu (Wikipedia)', url: 'https://en.wikipedia.org/wiki/Suhas_Katti_v._State_of_Tamil_Nadu' },
     ],
     affected_entities: ['Individual'],
     attack_method: 'Online harassment',
@@ -455,8 +455,8 @@ export const incidents: Incident[] = [
     summary: 'A large-scale fraud at a Pune-based BPO resulted in the siphoning of $426,000 from US bank accounts, shaking confidence in India\'s BPO industry.',
     description: 'Employees at a BPO firm in Pune used customer data they had access to, in order to illegally withdraw money from several US bank accounts. The incident was a major blow to the reputation of India\'s booming outsourcing industry and led to calls for stronger data protection laws and security measures.',
     sources: [
-      { title: 'BPO fraud: another Rs 38 lakh traced | Pune News', url: 'https://example.com/source-unavailable' },
-      { title: 'Pune call centre fraud rattles India\'s booming BPO sector, raises questions on security', url: 'https://example.com/source-unavailable' }
+      { title: 'BPO fraud: another Rs 38 lakh traced | Pune News', url: 'https://timesofindia.indiatimes.com/city/pune/bpo-fraud-another-rs-38-lakh-traced/articleshow/1150493.cms' },
+      { title: 'Pune call centre fraud rattles India\'s booming BPO sector, raises questions on security', url: 'https://www.indiatoday.in/magazine/nation/story/20050704-pune-call-centre-fraud-rattles-indias-booming-bpo-sector-raises-questions-on-security-787834-2005-07-04' }
     ],
     affected_entities: ['MphasiS (BPO)', 'US Banking Customers'],
     attack_method: 'Insider threat',
@@ -471,7 +471,7 @@ export const incidents: Incident[] = [
     severity: 'Medium',
     summary: 'The Zotob worm, targeting Windows 2000 systems, infected several media organizations in India and globally, disrupting their operations.',
     description: 'The Zotob worm exploited a Plug and Play vulnerability in Windows 2000. It disrupted operations at several major international media companies. While not as widespread as previous worms, its targeted nature showed the evolving threat landscape.',
-    sources: [{ title: 'Zotob (computer worm) - Wikipedia', url: 'https://example.com/source-unavailable' }],
+    sources: [{ title: 'Zotob (computer worm) - Wikipedia', url: 'https://en.wikipedia.org/wiki/Zotob' }],
     affected_entities: ['Media companies'],
     attack_method: 'Network worm',
     root_cause: 'Plug and Play vulnerability in Windows 2000',
@@ -486,8 +486,8 @@ export const incidents: Incident[] = [
     summary: 'The Kama Sutra (or Nyxem) worm spread through India, threatening to overwrite files on infected computers on the 3rd of every month.',
     description: 'The worm spread via email attachments. Its payload was set to trigger on the third day of each month, at which point it would attempt to overwrite files with various extensions (like .doc, .xls, .pdf). This destructive potential caused widespread concern among users and businesses in India.',
     sources: [
-      { title: 'Kama Sutra (computer worm) - Wikipedia', url: 'https://example.com/source-unavailable' },
-      { title: 'The Nyxem Email Virus: Analysis and Inferences - CAIDA.org', url: 'https://example.com/source-unavailable' }
+      { title: 'Kama Sutra (computer worm) - Wikipedia', url: 'https://en.wikipedia.org/wiki/Kama_Sutra_(computer_worm)' },
+      { title: 'The Nyxem Email Virus: Analysis and Inferences - CAIDA.org', url: 'https://www.caida.org/publications/papers/2006/nyxem/' }
     ],
     affected_entities: ['PC users'],
     attack_method: 'Email worm with destructive payload',
@@ -503,7 +503,7 @@ export const incidents: Incident[] = [
     summary: 'The global WannaCry ransomware attack impacted thousands of computers in India, affecting police departments, businesses, and individuals.',
     description: 'WannaCry exploited a Windows vulnerability (EternalBlue) to spread rapidly. It encrypted files and demanded a Bitcoin ransom. In India, systems in Andhra Pradesh, Gujarat, and West Bengal police departments were among those affected. The attack was a major wake-up call for ransomware threats.',
     sources: [
-        { title: 'CERT-In Advisory on WannaCry', url: 'https://example.com/source-unavailable' },
+        { title: 'CERT-In Advisory on WannaCry', url: 'https://www.cert-in.org.in/s2c/2017/Cert-In_Advisory_20170513.pdf' },
     ],
     affected_entities: ['Andhra Pradesh Police', 'Gujarat State Police', 'West Bengal State Electricity Distribution Company'],
     attack_method: 'Ransomware worm',
@@ -519,7 +519,7 @@ export const incidents: Incident[] = [
     summary: 'A large-scale phishing campaign targeted customers of the State Bank of India (SBI), attempting to steal login credentials and financial information.',
     description: 'The campaign involved sending SMS messages and emails that looked like official SBI communications, directing users to fake websites to update their details. Many customers reported losing money. SBI issued several warnings and advisories to its customers.',
     sources: [
-        { title: 'Livemint Report on SBI Phishing', url: 'https://example.com/source-unavailable' },
+        { title: 'Livemint Report on SBI Phishing', url: 'https://www.livemint.com/money/personal-finance/sbi-warning-beware-of-this-sms-phishing-scam-or-you-will-lose-your-money-11629087295739.html' },
     ],
     affected_entities: ['State Bank of India Customers'],
     attack_method: 'SMS and Email Phishing',
@@ -535,7 +535,7 @@ export const incidents: Incident[] = [
     summary: 'A data leak at Justdial, a major Indian local search engine, exposed the personal data of over 100 million users.',
     description: 'An unprotected API endpoint was discovered that allowed access to the data of any Justdial user, including names, email addresses, mobile numbers, and more. The issue affected users who had called the company\'s 8888888888 number. The vulnerability was present for a significant period before being discovered and reported.',
     sources: [
-        { title: 'TechCrunch Exclusive on Justdial Leak', url: 'https://example.com/source-unavailable' },
+        { title: 'TechCrunch Exclusive on Justdial Leak', url: 'https://techcrunch.com/2019/04/20/justdial-data-leak-100-million-users/' },
     ],
     affected_entities: ['Justdial Users'],
     attack_method: 'Insecure API',
@@ -551,7 +551,7 @@ export const incidents: Incident[] = [
     summary: 'In a sophisticated attack, hackers siphoned over ₹94 crore ($13.5 million) from Pune-based Cosmos Bank through simultaneous ATM withdrawals in 28 countries.',
     description: 'Hackers breached the bank\'s ATM server to clone thousands of debit cards and also initiated fraudulent SWIFT transactions. The money was withdrawn in a highly coordinated manner over two days. The attack was attributed to the Lazarus Group, a North Korean state-sponsored hacking collective.',
     sources: [
-        { title: 'Reuters Insight: The Cosmos Bank Heist', url: 'https://example.com/source-unavailable' },
+        { title: 'Reuters Insight: The Cosmos Bank Heist', url: 'https://www.reuters.com/investigates/special-report/cyber-heist-cosmos/' },
     ],
     affected_entities: ['Cosmos Bank'],
     attack_method: 'ATM malware, SWIFT fraud',
@@ -567,7 +567,7 @@ export const incidents: Incident[] = [
     summary: 'A vulnerability on the website of Indane Gas, a major LPG provider, exposed the Aadhaar details of millions of its customers.',
     description: 'A French security researcher found a flaw on an Indane dealer portal that allowed access to the names, addresses, and Aadhaar numbers of a vast number of customers. The lack of authentication on the portal meant that anyone with a valid customer ID could potentially access the data of other customers.',
     sources: [
-        { title: 'ZDNet Report on Indane Leak', url: 'https://example.com/source-unavailable' },
+        { title: 'ZDNet Report on Indane Leak', url: 'https://www.zdnet.com/article/indian-gas-company-leaks-aadhaar-data-on-millions-of-customers-again/' },
     ],
     affected_entities: ['Indane Gas Customers'],
     attack_method: 'Insecure Direct Object Reference (IDOR)',
@@ -583,7 +583,7 @@ export const incidents: Incident[] = [
     summary: 'Online travel booking company Cleartrip suffered a data breach, with the company acknowledging an unauthorized access to its internal systems.',
     description: 'Cleartrip sent an email to its customers confirming a security anomaly and advising a password reset. While the company stated that no sensitive information was compromised, reports suggested that customer data had appeared for sale on the dark web. This highlighted the ongoing risks faced by e-commerce platforms.',
     sources: [
-        { title: 'TechCrunch Report on Cleartrip Breach', url: 'https://example.com/source-unavailable' },
+        { title: 'TechCrunch Report on Cleartrip Breach', url: 'https://techcrunch.com/2022/07/18/india-cleartrip-customer-data-breach/' },
     ],
     affected_entities: ['Cleartrip'],
     attack_method: 'Undisclosed',
@@ -828,7 +828,7 @@ export const incidents: Incident[] = [
     sources: [
       {
         title: 'Year ender 2024: Biggest cyberattacks in India',
-        url: 'https://economictimes.com/tech/technology/year-ender-2024-biggest-cyberattacks-in-india/articleshow/116796935.cms',
+        url: 'https://economictimes.indiatimes.com/tech/technology/year-ender-2024-biggest-cyberattacks-in-india/articleshow/116796935.cms',
       },
       {
         title: '25 Major Cyber Attacks in India That Shocked the Nation',
@@ -897,7 +897,7 @@ export const incidents: Incident[] = [
     sources: [
       {
         title: 'Year Ender 2024: Biggest Cyberattacks in India',
-        url: 'https://economictimes.com/tech/technology/year-ender-2024-biggest-cyberattacks-in-india/articleshow/116796935.cms',
+        url: 'https://economictimes.indiatimes.com/tech/technology/year-ender-2024-biggest-cyberattacks-in-india/articleshow/116796935.cms',
       },
       {
         title: 'Biggest Cyber Attacks in India 2024',
