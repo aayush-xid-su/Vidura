@@ -2,8 +2,6 @@
 /**
  * @fileOverview A Genkit flow for finding incidents similar to a selected incident using AI analysis.
  */
-import { config } from 'dotenv';
-config();
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
