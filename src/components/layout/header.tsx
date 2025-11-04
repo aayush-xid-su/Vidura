@@ -1,3 +1,4 @@
+
 'use client';
 
 import { usePathname } from 'next/navigation';
@@ -344,39 +345,41 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
-              <SheetHeader>
-                <SheetTitle className="sr-only">Main Menu</SheetTitle>
-              </SheetHeader>
-              <Link href="/" className="mr-6 flex items-center space-x-2 mb-6" onClick={() => setMobileMenuOpen(false)}>
-                <ViduraLogo className="h-6 w-6 text-primary" />
-                <span className="font-bold">Vidura</span>
-              </Link>
-              <nav className="flex flex-col gap-4 text-lg">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={cn(
-                      'transition-colors hover:text-primary',
-                      pathname === item.href ? 'text-primary font-semibold' : 'text-foreground/60'
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-                 <Separator className="my-2" />
-                  <DialogTrigger asChild>
-                    <button className="text-lg text-foreground/60 transition-colors hover:text-primary text-left flex items-center gap-2">
-                        <Info className="h-5 w-5" /> About
-                    </button>
-                  </DialogTrigger>
-                  <DialogTrigger asChild>
-                     <button className="text-lg text-foreground/60 transition-colors hover:text-primary text-left flex items-center gap-2">
-                        <FileText className="h-5 w-5" /> T&C
-                    </button>
-                  </DialogTrigger>
-              </nav>
+                <Dialog>
+                    <SheetHeader>
+                        <SheetTitle className="sr-only">Main Menu</SheetTitle>
+                    </SheetHeader>
+                    <Link href="/" className="mr-6 flex items-center space-x-2 mb-6" onClick={() => setMobileMenuOpen(false)}>
+                        <ViduraLogo className="h-6 w-6 text-primary" />
+                        <span className="font-bold">Vidura</span>
+                    </Link>
+                    <nav className="flex flex-col gap-4 text-lg">
+                        {navItems.map((item) => (
+                        <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className={cn(
+                            'transition-colors hover:text-primary',
+                            pathname === item.href ? 'text-primary font-semibold' : 'text-foreground/60'
+                            )}
+                        >
+                            {item.label}
+                        </Link>
+                        ))}
+                        <Separator className="my-2" />
+                        <DialogTrigger asChild>
+                            <button className="text-lg text-foreground/60 transition-colors hover:text-primary text-left flex items-center gap-2">
+                                <Info className="h-5 w-5" /> About
+                            </button>
+                        </DialogTrigger>
+                        <DialogTrigger asChild>
+                            <button className="text-lg text-foreground/60 transition-colors hover:text-primary text-left flex items-center gap-2">
+                                <FileText className="h-5 w-5" /> T&amp;C
+                            </button>
+                        </DialogTrigger>
+                    </nav>
+                </Dialog>
             </SheetContent>
           </Sheet>
         </div>
@@ -384,3 +387,5 @@ export function Header() {
     </header>
   );
 }
+
+    
