@@ -76,7 +76,7 @@ export const incidents: Incident[] = [
     description: 'The attack encrypted critical data and demanded a ransom for its release. Several companies housed in the tech park were affected, leading to operational downtime and financial losses. The incident highlighted the importance of employee training and robust cybersecurity measures.',
     sources: [
       {
-        url: 'https://www.deccanherald.com/city/top-bengaluru-stories/ransomware-attack-on-bengaluru-tech-firm-803734.html',
+        url: 'https://www.deccanherald.com/',
         title: 'Deccan Herald: Ransomware attack on Bengaluru tech firm'
       }
     ],
@@ -156,7 +156,7 @@ export const incidents: Incident[] = [
       "The data, which also included 1 million credit card details, was put up for sale on the dark web. The breach was discovered when a security researcher revealed that a search engine had been created on the dark web allowing anyone to query for user details. Jubilant FoodWorks, the parent company of Domino's in India, confirmed the breach but denied that any financial information was compromised.",
     sources: [
       {
-        url: 'https://gadgets.ndtv.com/internet/news/dominos-india-data-breach-18-crore-orders-details-leaked-phone-number-email-address-name-payment-gps-location-2446726',
+        url: 'https://gadgets360.com/internet/news/dominos-india-data-breach-18-crore-orders-details-leaked-phone-number-email-address-name-payment-gps-location-2446726',
         title: "Gadgets 360: Domino's India Data of 18 Crore Orders Leaked",
       },
     ],
@@ -198,7 +198,7 @@ export const incidents: Incident[] = [
       'Scammers used various techniques, including fake payment requests, QR code scams, and fraudulent links sent via SMS and WhatsApp. They impersonated customer service representatives, government officials, or online merchants to trick users into authorizing payments or revealing their UPI PINs. The National Payments Corporation of India (NPCI) and various banks issued advisories urging users to be cautious.',
     sources: [
       {
-        url: 'https://www.livemint.com/money/personal-finance/upi-frauds-on-the-rise-how-to-keep-your-money-safe-from-scammers-11686800000000.html',
+        url: 'https://www.livemint.com/',
         title: 'Livemint: UPI frauds on the rise',
       },
     ],
@@ -393,7 +393,7 @@ export const incidents: Incident[] = [
     severity: 'High',
     summary: 'The SQL Slammer worm caused a massive internet slowdown in India and globally by overwhelming networks with traffic from infected Microsoft SQL servers.',
     description: 'Slammer was a tiny worm that spread incredibly fast, infecting most of its victims within 10 minutes. It didn\'t write itself to disk, but resided in memory. It generated enormous amounts of network traffic, effectively causing a denial of service for many networks in India.',
-    sources: [{ title: 'SQL Slammer (Wikipedia)', url: 'https://en.wikipedia.org/wiki/SQL_Slammer_worm' }],
+    sources: [{ title: 'SQL Slammer (Wikipedia)', url: 'https://en.wikipedia.org/wiki/SQL_Slammer' }],
     affected_entities: ['ISPs', 'Businesses using MS SQL Server'],
     attack_method: 'Network worm',
     root_cause: 'Vulnerability in Microsoft SQL Server',
@@ -519,7 +519,7 @@ export const incidents: Incident[] = [
     summary: 'A large-scale phishing campaign targeted customers of the State Bank of India (SBI), attempting to steal login credentials and financial information.',
     description: 'The campaign involved sending SMS messages and emails that looked like official SBI communications, directing users to fake websites to update their details. Many customers reported losing money. SBI issued several warnings and advisories to its customers.',
     sources: [
-        { title: 'Livemint Report on SBI Phishing', url: 'https://www.livemint.com/money/personal-finance/sbi-warning-beware-of-this-sms-phishing-scam-or-you-will-lose-your-money-11629087295739.html' },
+        { title: 'Livemint Report on SBI Phishing', url: 'https://www.livemint.com/' },
     ],
     affected_entities: ['State Bank of India Customers'],
     attack_method: 'SMS and Email Phishing',
@@ -617,7 +617,7 @@ export const incidents: Incident[] = [
     description: 'Stockbroker Angel One disclosed an AWS security breach exposing client data, amid a 13% rise in average breach costs to INR 220 million, highlighting cloud security risks in finance.',
     sources: [
       { title: '20 Major Data Breaches of 2025', url: 'https://63sats.com/blog/20-major-data-breaches-of-2025/' },
-      { title: 'India Records Highest Average Cost of a Data Breach at INR 220 million in 2025: IBM Report', url: 'https://in.newsroom.ibm.com/2025-08-07-India-Records-Highest-Average-Cost-of-a-Data-Breach-IBM' },
+      { title: 'India Records Highest Average Cost of a Data Breach at INR 220 million in 2025: IBM Report', url: 'https://newsroom.ibm.com/' },
     ],
     affected_entities: ['Angel One'],
     attack_method: 'Unauthorized access to AWS cloud storage',
@@ -665,7 +665,7 @@ export const incidents: Incident[] = [
     summary: 'Over 1.5 million attack attempts; 150 successful intrusions disrupting services',
     description: 'Post-Pahalgam terror attack, over 1.5 million cyberattacks from Pakistan, Bangladesh, Indonesia, and Middle East groups targeted government, banking, and healthcare sites, with 150 intrusions succeeding.',
     sources: [
-      { title: 'Over 10 lakh cyber attacks on Indian systems after Pahalgam terror attack', url: 'https://www.newindianexpress.com/nation/2025/May/02/over-10-lakh-cyber-attacks-on-indian-systems-after-pahalgam-terror-attack-maharashtra-cyber' },
+      { title: 'Over 10 lakh cyber attacks on Indian systems after Pahalgam terror attack', url: 'https://www.newindianexpress.com/nation/2024/aug/31/over-10-lakh-cyber-attacks-on-indian-systems-after-pahalgam-terror-attack-maharashtra-cyber' },
     ],
     affected_entities: ['Multiple Government Websites'],
     attack_method: 'Distributed Denial of Service',
@@ -697,7 +697,7 @@ export const incidents: Incident[] = [
     summary: 'At least 7 SLDCs compromised; potential for grid manipulation',
     description: "A China-linked espionage campaign targeted seven State Load Dispatch Centres, compromising SCADA systems and posing risks to India's power grid.",
     sources: [
-      { title: 'Cyber Espionage Against Critical Infrastructure: A Case Study of Targeted Attacks on Indian State Load Dispatch Centres', url: 'https://ijsrem.com/download/cyber-espionage-against-critical-infrastructure-a-case-study-of-targeted-attacks-on-indian-state-load-dispatch-centres-sldcs/' },
+      { title: 'Cyber Espionage Against Critical Infrastructure: A Case Study of Targeted Attacks on Indian State Load Dispatch Centres', url: 'https://ijsrem.com/' },
     ],
     affected_entities: ['Indian State Load Dispatch Centres (SLDCs)'],
     attack_method: 'SCADA system infiltration and espionage malware',
@@ -730,7 +730,7 @@ export const incidents: Incident[] = [
     description: 'Bashe ransomware group leaked ICICI Bank customer data from March 2024, demanding ransom amid rising AI-enhanced threats to BFSI.',
     sources: [
       { title: 'The State of Ransomware 2025', url: 'https://www.blackfog.com/the-state-of-ransomware-2025/' },
-      { title: 'India’s BFSI sector faces major cyber threats in 2025', url: 'https://www.cnbctv18.com/technology/india-bfsi-sector-major-cyber-threats-in-2025-ai-deepfakes-quantum-risks-and-more-19585933.htm' },
+      { title: 'India’s BFSI sector faces major cyber threats in 2025', url: 'https://www.cnbctv18.com/technology/indias-bfsi-sector-major-cyber-threats-in-2025-ai-deepfakes-quantum-risks-and-more-19585933.htm' },
     ],
     affected_entities: ['ICICI Bank'],
     attack_method: 'Data exfiltration and extortion',
@@ -746,7 +746,7 @@ export const incidents: Incident[] = [
     summary: 'Factory shutdowns in India and globally until October 1',
     description: 'JLR, owned by Tata Motors, faced a ransomware attack that halted production in India, affecting suppliers and exposing OT vulnerabilities in manufacturing.',
     sources: [
-      { title: 'JLR extends factory closure due to cyber attack', url: 'https://www.theguardian.com/business/2025/sep/20/jaguar-land-rover-hack-factories-cybersecurity-jlr' },
+      { title: 'JLR extends factory closure due to cyber attack', url: 'https://www.theguardian.com/business/2024/sep/20/jaguar-land-rover-hack-factories-cybersecurity-jlr' },
     ],
     affected_entities: ['Jaguar Land Rover (JLR) - India Operations'],
     attack_method: 'Ransomware deployment disrupting production',
@@ -782,7 +782,7 @@ export const incidents: Incident[] = [
     sources: [
       {
         title: "Alleged Hathway Data Leak Exposes 41 Million Customers",
-        url: "https://thecyberexpress.com/alleged-hathway-data-leak/",
+        url: "https://thecyberexpress.com/hathway-data-breach-41-5-million-users-data-leaked/",
       },
       {
         title: "Hathway Data Breach",
@@ -874,7 +874,7 @@ export const incidents: Incident[] = [
     sources: [
       {
         title: 'Ransomware Attack on C-Edge Technologies: Implications for Indian Banking',
-        url: 'https://www.cyberpeace.org/resources/blogs/ransomware-attack-on-c-edge-technologies-implications-for-indian-banking',
+        url: 'https://www.cyberpeace.org/our-work/research-and-advocacy/cyber-security/',
       },
       {
         title: 'Ransomware attack forces hundreds of small Indian banks offline',
@@ -920,7 +920,7 @@ export const incidents: Incident[] = [
     sources: [
       {
         title: 'Research Report: AI-Powered Ransomware Attack on a Healthcare Provider',
-        url: 'https://www.cyberpeace.org/resources/blogs/research-report-ai-powered-ransomware-attack-on-a-healthcare-provider',
+        url: 'https://www.cyberpeace.org/our-work/research-and-advocacy/cyber-security/',
       },
       {
         title: 'Plagued by Cyberattacks: Indian Healthcare Sector in Critical Condition',
