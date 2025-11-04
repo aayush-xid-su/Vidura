@@ -33,3 +33,5 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+// copyright aayush_xid_su 
