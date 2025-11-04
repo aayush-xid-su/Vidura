@@ -24,7 +24,7 @@ export default function Home() {
         Search and filter through cybersecurity incidents in India (2000-2025). This is a static snapshot; in a real-world application, this data would be connected to a live feed for automatic updates.
       </p>
       
-      <Suspense fallback={<SearchFallback />}>
+      <Suspense fallback={<SearchFallback />} >
         <HomeClient />
       </Suspense>
 
